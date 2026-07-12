@@ -309,3 +309,489 @@ img { max-width: 100%; display: block; }
     .hero-buttons { flex-direction: column; align-items: center; }
     .profile-img-wrapper { width: 140px; height: 140px; }
 }
+
+
+/* ============================================================
+   VamAI Floating Chat Widget
+   Appended — zero existing styles changed
+   ============================================================ */
+
+/* ── Floating Bubble ─────────────────────────────────────── */
+.vamai-bubble {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b45309, #d4af37);
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    box-shadow: 0 6px 30px rgba(212, 175, 55, 0.45);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s ease;
+    animation: vamai-pulse 3s ease-in-out infinite;
+}
+.vamai-bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.65);
+}
+.vamai-bubble--active {
+    animation: none;
+    transform: scale(0.92);
+}
+.vamai-bubble__icon { line-height: 1; }
+.vamai-bubble__label {
+    position: absolute;
+    bottom: 68px;
+    right: 0;
+    background: var(--bg-card);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.vamai-bubble:hover .vamai-bubble__label {
+    opacity: 1;
+    transform: translateY(0);
+}
+@keyframes vamai-pulse {
+    0%, 100% { box-shadow: 0 6px 30px rgba(212, 175, 55, 0.45); }
+    50%       { box-shadow: 0 6px 45px rgba(212, 175, 55, 0.75); }
+}
+
+/* ── Chat Widget Panel ───────────────────────────────────── */
+.vamai-widget {
+    position: fixed;
+    bottom: 108px;
+    right: 32px;
+    width: 430px;
+    height: 560px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9998;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212,175,55,0.1);
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.vamai-widget.vamai-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* ── Widget Header ───────────────────────────────────────── */
+.vamai-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, rgba(180,83,9,0.25), rgba(212,175,55,0.12));
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.vamai-header__avatar {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #b45309, #d4af37);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.vamai-header__info { flex: 1; min-width: 0; }
+.vamai-header__name {
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+.vamai-header__status {
+    font-size: 0.72rem;
+    color: var(--text-2);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2px;
+}
+.vamai-status-dot {
+    width: 7px;
+    height: 7px;
+    background: #2ed573;
+    border-radius: 50%;
+    animation: vamai-blink 2s ease-in-out infinite;
+}
+@keyframes vamai-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+.vamai-close {
+    background: none;
+    border: none;
+    color: var(--text-2);
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 4px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+}
+.vamai-close:hover { color: var(--text-1); background: rgba(255,255,255,0.06); }
+
+/* ── Chat Area ───────────────────────────────────────────── */
+.vamai-chat-area {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212,175,55,0.2) transparent;
+}
+.vamai-chat-area::-webkit-scrollbar { width: 4px; }
+.vamai-chat-area::-webkit-scrollbar-track { background: transparent; }
+.vamai-chat-area::-webkit-scrollbar-thumb {
+    background: rgba(212,175,55,0.25);
+    border-radius: 99px;
+}
+
+/* ── Messages ────────────────────────────────────────────── */
+.vamai-msg {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    animation: vamai-fadeUp 0.35s ease both;
+}
+.vamai-msg--user { flex-direction: row-reverse; }
+
+@keyframes vamai-fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.vamai-msg__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(212,175,55,0.12);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.vamai-msg__bubble {
+    max-width: 78%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    word-break: break-word;
+}
+.vamai-msg--bot .vamai-msg__bubble {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+    color: var(--text-1);
+}
+.vamai-msg--user .vamai-msg__bubble {
+    background: linear-gradient(135deg, #b45309, #d4af37);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+/* Response cards inside bot messages */
+.vamai-msg__bubble .response-card {
+    background: rgba(212,175,55,0.07);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 10px 13px;
+    margin: 10px 0;
+}
+.vamai-msg__bubble .response-card h3 {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+.vamai-msg__bubble .response-card p { color: var(--text-2); font-size: 0.82rem; margin: 4px 0; }
+.vamai-msg__bubble .response-card strong { color: var(--text-1); }
+.vamai-msg__bubble .response-card a { color: var(--accent); font-weight: 600; }
+.vamai-msg__bubble .response-card a:hover { text-decoration: underline; }
+.vamai-msg__bubble h2 { color: var(--accent); font-size: 0.9rem; margin-bottom: 8px; }
+.vamai-msg__bubble ul { padding-left: 16px; }
+.vamai-msg__bubble li { font-size: 0.82rem; color: var(--text-2); margin: 3px 0; }
+
+/* ── Typing Indicator ────────────────────────────────────── */
+.vamai-typing .vamai-msg__bubble {
+    padding: 14px 18px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.vamai-typing-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: vamai-bounce 1.2s ease-in-out infinite;
+}
+.vamai-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.vamai-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes vamai-bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+    40%            { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ── Suggested Chips ─────────────────────────────────────── */
+.vamai-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 14px 12px;
+    flex-shrink: 0;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    max-height: 120px;
+    overflow: hidden;
+}
+.vamai-suggestions--hidden {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    pointer-events: none;
+}
+.vamai-chip {
+    background: rgba(212,175,55,0.08);
+    border: 1px solid rgba(212,175,55,0.25);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 99px;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+}
+.vamai-chip:hover {
+    background: rgba(212,175,55,0.18);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ── Input Row ───────────────────────────────────────────── */
+.vamai-input-area {
+    padding: 10px 12px 14px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.vamai-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 8px 10px 8px 14px;
+    transition: border-color 0.25s;
+}
+.vamai-input-row:focus-within { border-color: rgba(212,175,55,0.5); }
+.vamai-input-field {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-1);
+    font-family: var(--font);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    resize: none;
+    max-height: 80px;
+    scrollbar-width: none;
+}
+.vamai-input-field::placeholder { color: var(--text-3); }
+.vamai-input-field::-webkit-scrollbar { display: none; }
+.vamai-send-btn {
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #b45309, #d4af37);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
+}
+.vamai-send-btn:hover:not(:disabled) {
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(212,175,55,0.45);
+}
+.vamai-send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.vamai-input-hint {
+    text-align: center;
+    font-size: 0.65rem;
+    color: var(--text-3);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+}
+
+/* ── Welcome Tooltip ────────────────────────────────────── */
+.vamai-tooltip {
+    position: absolute;
+    bottom: 70px;
+    right: 50%;
+    transform: translateX(50%) translateY(8px);
+    background: var(--bg-card, #171717);
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    box-shadow: 0 4px 20px rgba(212,175,55,0.2);
+    z-index: 10000;
+}
+.vamai-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    transform: translateX(50%);
+    border: 6px solid transparent;
+    border-top-color: var(--border);
+}
+.vamai-tooltip--visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(50%) translateY(0);
+}
+
+/* ── Resume Download Button ──────────────────────────────── */
+.vamai-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #b45309, #d4af37);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.82rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 12px rgba(212,175,55,0.35);
+}
+.vamai-resume-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212,175,55,0.5);
+    text-decoration: none;
+    color: #fff;
+}
+
+/* ── Capabilities List ───────────────────────────────────── */
+.vamai-capabilities {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+.vamai-capabilities li {
+    padding: 5px 0;
+    font-size: 0.82rem;
+    color: var(--text-2);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.5;
+}
+.vamai-capabilities li:last-child { border-bottom: none; }
+.vamai-capabilities em {
+    color: var(--accent);
+    font-style: normal;
+    font-size: 0.78rem;
+}
+
+/* ── Compact Response Cards ──────────────────────────────── */
+.vamai-msg__bubble .response-card {
+    margin: 6px 0;
+    padding: 8px 12px;
+}
+.vamai-msg__bubble .response-card h3 { margin-bottom: 4px; }
+.vamai-msg__bubble .response-card p  { margin: 3px 0; }
+
+/* ── Focus / Accessibility ───────────────────────────────── */
+.vamai-chip:focus-visible,
+.vamai-close:focus-visible,
+.vamai-send-btn:focus-visible,
+.vamai-bubble:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ── Mobile Responsive ───────────────────────────────────── */
+@media (max-width: 768px) {
+    .vamai-widget {
+        width: 360px;
+        height: 520px;
+    }
+}
+@media (max-width: 480px) {
+    .vamai-widget {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+    }
+    .vamai-bubble {
+        bottom: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
+        font-size: 1.4rem;
+    }
+    .vamai-msg__bubble { max-width: 85%; font-size: 0.84rem; }
+    .vamai-chip { font-size: 0.68rem; padding: 4px 9px; }
+}
+@media (max-width: 375px) {
+    .vamai-widget { height: 100dvh; }
+    .vamai-header { padding: 12px 14px; }
+    .vamai-chat-area { padding: 12px 10px 10px; }
+    .vamai-input-area { padding: 8px 10px 12px; }
+    .vamai-msg__bubble { font-size: 0.82rem; }
+}
+@media (max-width: 320px) {
+    .vamai-header__name { font-size: 0.85rem; }
+    .vamai-header__status { font-size: 0.65rem; }
+    .vamai-input-field { font-size: 0.82rem; }
+}

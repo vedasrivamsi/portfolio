@@ -352,6 +352,78 @@
         </div>
     </footer>
 
+    <!-- ===== VamAI Floating Chat Widget ===== -->
+
+    <!-- Floating Bubble Button -->
+    <button class="vamai-bubble" id="vamAiBubble" aria-label="Open VamAI Chat" aria-haspopup="dialog">
+        <span class="vamai-bubble__icon" aria-hidden="true">🤖</span>
+        <span class="vamai-bubble__label" aria-hidden="true">Ask VamAI</span>
+        <span class="vamai-tooltip" id="vamAiTooltip" role="tooltip">✨ Try VamAI</span>
+    </button>
+
+
+    <!-- Chat Widget Panel -->
+    <div class="vamai-widget" id="vamAiWidget" role="dialog" aria-label="VamAI Chat">
+
+        <!-- Header -->
+        <div class="vamai-header">
+            <div class="vamai-header__avatar">🤖</div>
+            <div class="vamai-header__info">
+                <div class="vamai-header__name">VamAI</div>
+                <div class="vamai-header__status">
+                    <span class="vamai-status-dot"></span>
+                    <span>Ask me anything about Vamsi</span>
+                </div>
+            </div>
+            <button class="vamai-close" id="vamAiClose" aria-label="Close chat">✕</button>
+        </div>
+
+        <!-- Chat Messages Area -->
+        <div class="vamai-chat-area" id="vamAiChatArea" role="log" aria-live="polite">
+
+            <!-- Welcome Message -->
+            <div class="vamai-msg vamai-msg--bot">
+                <div class="vamai-msg__avatar">🤖</div>
+                <div class="vamai-msg__bubble">
+                    👋 Hi! I'm <strong>VamAI</strong>, Vamsi's personal AI assistant.<br><br>
+                    Ask me about his <strong>skills</strong>, <strong>projects</strong>,
+                    <strong>internships</strong>, <strong>certifications</strong>, or how to
+                    <strong>contact</strong> him!
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Suggested Question Chips -->
+        <div class="vamai-suggestions" id="vamAiSuggestions" aria-label="Suggested questions">
+            <button class="vamai-chip" data-q="Who is Vamsi?">👤 Who is Vamsi?</button>
+            <button class="vamai-chip" data-q="What are your skills?">💻 Skills</button>
+            <button class="vamai-chip" data-q="What projects have you built?">📂 Projects</button>
+            <button class="vamai-chip" data-q="Tell me about your internship.">🏢 Internship</button>
+            <button class="vamai-chip" data-q="What certifications do you have?">🏆 Certifications</button>
+            <button class="vamai-chip" data-q="How can I contact you?">📧 Contact</button>
+        </div>
+
+        <!-- Input Area -->
+        <div class="vamai-input-area">
+            <form class="vamai-input-row" id="vamAiForm" autocomplete="off">
+                <textarea
+                    id="vamAiInput"
+                    class="vamai-input-field"
+                    placeholder="Ask anything about Vamsi..."
+                    rows="1"
+                    aria-label="Message input"
+                ></textarea>
+                <button type="submit" class="vamai-send-btn" id="vamAiSendBtn" aria-label="Send" disabled>
+                    ➤
+                </button>
+            </form>
+            <p class="vamai-input-hint">Powered by VamAI • Ask me anything!</p>
+        </div>
+
+    </div>
+    <!-- ===== End VamAI Widget ===== -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
     <script>
@@ -362,6 +434,11 @@
             "max-glare": 0.2,
         });
     </script>
+
+    <!-- VamAI Scripts — loaded last so DOM is ready -->
+    <script src="knowledgeBase.js"></script>
+    <script src="vamai-widget.js"></script>
+
 </body>
 
 </html>
