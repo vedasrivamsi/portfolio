@@ -602,7 +602,7 @@ ${results.map(formatProject).join("<br>")}
         return `
 I am pursuing <strong>${knowledgeBase.personal.education}</strong> in <strong>${knowledgeBase.personal.degree}</strong> at <strong>${knowledgeBase.personal.college}</strong>.<br><br>
 <strong>📊 CGPA:</strong> 7.36 (ongoing)<br>
-<strong>🎓 Status:</strong> Currently in my final year, expected to graduate in 2026.
+<strong>🎓 Status:</strong> Currently in my final year, expected to graduate in 2027.
 `;
     }
 
