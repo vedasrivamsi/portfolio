@@ -139,22 +139,6 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillFills.forEach(el => skillObserver.observe(el));
 
 
-// ===== Contact Form =====
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = document.getElementById('contactSubmit');
-        btn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-        btn.style.background = 'linear-gradient(135deg, #2ed573, #00cec9)';
-        setTimeout(() => {
-            btn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-            btn.style.background = '';
-            e.target.reset();
-        }, 3000);
-    });
-}
-
 
 // ===== Smooth Scroll for all anchor links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

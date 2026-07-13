@@ -360,7 +360,14 @@ const intents = {
       "about vamsi",
       "introduce yourself",
       "tell me about yourself",
-      "who are you"
+      "who are you",
+      "where is he from",
+      "where are you from",
+      "hometown",
+      "location",
+      "city",
+      "visakhapatnam",
+      "vizag"
   ],
 
   education: [
@@ -369,7 +376,17 @@ const intents = {
       "college",
       "degree",
       "university",
-      "btech"
+      "btech",
+      "cgpa",
+      "gpa",
+      "grade",
+      "score",
+      "marks",
+      "graduate",
+      "graduation",
+      "passout",
+      "qualified",
+      "academic"
   ],
 
   skills: [
@@ -418,6 +435,23 @@ const intents = {
       "github",
       "linkedin",
       "reach"
+  ],
+
+  achievements: [
+      "achievement",
+      "achievements",
+      "award",
+      "awards",
+      "honor",
+      "honours",
+      "accomplishment",
+      "accomplishments",
+      "recognition",
+      "won",
+      "winning",
+      "ranking",
+      "proud of",
+      "highlight"
   ]
 
 };
@@ -566,7 +600,9 @@ ${results.map(formatProject).join("<br>")}
 
       conversationContext.lastIntent = "education";
         return `
-I am pursuing <strong>${knowledgeBase.personal.education}</strong> in <strong>${knowledgeBase.personal.degree}</strong> at <strong>${knowledgeBase.personal.college}</strong>.
+I am pursuing <strong>${knowledgeBase.personal.education}</strong> in <strong>${knowledgeBase.personal.degree}</strong> at <strong>${knowledgeBase.personal.college}</strong>.<br><br>
+<strong>📊 CGPA:</strong> 7.36 (ongoing)<br>
+<strong>🎓 Status:</strong> Currently in my final year, expected to graduate in 2026.
 `;
     }
 
@@ -626,6 +662,35 @@ ${knowledgeBase.certifications
       return formatContact();
   
   }
+
+  if (hasIntent(input, "achievements")) {
+
+    conversationContext.lastIntent = "achievements";
+
+    return `
+<div class="response-card">
+
+<h3>🏆 Key Achievements & Highlights</h3>
+
+<p><strong>🎓 Academic:</strong><br>
+Maintaining a CGPA of <strong>7.36</strong> in B.Tech Computer Science Engineering at Andhra University College of Engineering, Visakhapatnam.</p>
+
+<p><strong>💼 Internships:</strong><br>
+Completed <strong>3 internships</strong> — at Brainovision Solutions (AI & Automation), RINL (Full Stack Development), and InternPe (Java Programming).</p>
+
+<p><strong>📜 Certifications:</strong><br>
+Earned <strong>9 certifications</strong> from recognized organizations including NxtWave, AWS Forage, GUVI-HCL, Student Tribe, and internship completion certificates.</p>
+
+<p><strong>🤖 Projects:</strong><br>
+Built a fully functional <strong>AI chatbot (VamAI)</strong> integrated into a portfolio website using pure HTML, CSS, and JavaScript — no backend, no APIs.</p>
+
+<p><strong>🌐 Live Portfolio:</strong><br>
+Deployed a professional portfolio on <a href="https://vedasrivamsi.github.io/portfolio/" target="_blank">GitHub Pages</a> with a custom AI assistant.</p>
+
+</div>
+`;
+
+}
 
   return formatHelp();
 }
