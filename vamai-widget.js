@@ -94,9 +94,41 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     5. MESSAGE RENDERING
+     5. SESSION STORAGE PERSISTENCE ENGINE
   ──────────────────────────────────────────────────────────── */
-  function appendMessage(html, role) {
+  let chatHistory = [];
+
+  function loadSavedHistory() {
+    try {
+      const saved = sessionStorage.getItem('vamAiChatHistory');
+      if (saved) {
+        chatHistory = JSON.parse(saved);
+        if (Array.isArray(chatHistory) && chatHistory.length > 0) {
+          // Hide suggestion chips if user already engaged in chat
+          hideSuggestions();
+          chatHistory.forEach(msg => {
+            appendMessage(msg.html, msg.role, false);
+          });
+        }
+      }
+    } catch (e) {
+      console.warn('VamAI: Error loading chat history from sessionStorage', e);
+    }
+  }
+
+  function saveMessageToHistory(html, role) {
+    chatHistory.push({ role, html });
+    try {
+      sessionStorage.setItem('vamAiChatHistory', JSON.stringify(chatHistory));
+    } catch (e) {
+      console.warn('VamAI: Error saving chat message to sessionStorage', e);
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     6. MESSAGE RENDERING
+  ──────────────────────────────────────────────────────────── */
+  function appendMessage(html, role, save = true) {
     const wrapper = document.createElement('div');
     wrapper.className = `vamai-msg vamai-msg--${role}`;
 
@@ -119,11 +151,16 @@
 
     chatArea.appendChild(wrapper);
     scrollToBottom();
+
+    if (save) {
+      saveMessageToHistory(html, role);
+    }
+
     return wrapper;
   }
 
   /* ──────────────────────────────────────────────────────────
-     6. HIDE SUGGESTED CHIPS (after first interaction)
+     7. HIDE SUGGESTED CHIPS (after first interaction)
   ──────────────────────────────────────────────────────────── */
   function hideSuggestions() {
     if (suggestionsShown) {
@@ -259,7 +296,8 @@ Instructions: Answer the user's question concisely, politely, and professionally
       '<span class="vamai-typing-dot" aria-hidden="true"></span>' +
       '<span class="vamai-typing-dot" aria-hidden="true"></span>' +
       '<span class="vamai-typing-dot" aria-hidden="true"></span>',
-      'bot'
+      'bot',
+      false
     );
     typingEl.classList.add('vamai-typing');
     typingEl.setAttribute('aria-label', 'VamAI is typing');
@@ -337,7 +375,8 @@ Instructions: Answer the user's question concisely, politely, and professionally
     }
   });
 
-  // Init button state
+  // Init button state & load session chat history
   sendBtn.disabled = true;
+  loadSavedHistory();
 
 })();
