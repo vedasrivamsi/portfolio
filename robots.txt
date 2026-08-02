@@ -1,0 +1,6 @@
+# Robots.txt for Sugunesh Veda Sri Vamsi Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://vedasrivamsi.github.io/portfolio/sitemap.xml
