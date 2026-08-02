@@ -594,6 +594,92 @@ ${results.map(formatProject).join("<br>")}
   
   }
 
+    /* ── 1. SPECIFIC MICRO-INTENTS (Precision Answers) ── */
+
+    // CGPA / Marks / Grades
+    const cgpaKw = ["cgpa", "gpa", "marks", "percentage", "score", "grades", "percentage in btech", "btech cgpa"];
+    if (cgpaKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "cgpa";
+        return `
+<div class="response-card">
+    <h3>📊 Academic CGPA & Marks Summary</h3>
+    <p>🎓 <strong>B.Tech (CSE) &mdash; AUCE:</strong> CGPA <strong>7.43</strong> (Ongoing, 2023 &ndash; Present)</p>
+    <p>🏫 <strong>Intermediate (MPC) &mdash; Sri Viswa:</strong> <strong>78.7%</strong> (2021 &ndash; 2023)</p>
+    <p>📖 <strong>Class 10 (CBSE) &mdash; Sri Krishna Vidya Mandir:</strong> <strong>72.8%</strong> (2021)</p>
+</div>
+`;
+    }
+
+    // Brainovision Internship
+    const brainovisionKw = ["brainovision", "ai intern", "ai simulator", "generative ai", "slm", "llm"];
+    if (brainovisionKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "brainovision";
+        return `
+<div class="response-card">
+    <h3>🤖 Brainovision AI &amp; Automation Internship</h3>
+    <p><strong>Role:</strong> AI for Generation &amp; Automation Intern (Jun &ndash; Jul 2026 &bull; 2 Months &bull; Hybrid, Hyderabad)</p>
+    <p>Gained expertise in <strong>Generative AI</strong>, <strong>LLMs</strong>, <strong>SLMs</strong>, <strong>Prompt Engineering</strong>, and <strong>RAG</strong>. Built an <strong>AI Interview Simulator</strong> integrating local KB + Gemini API.</p>
+</div>
+`;
+    }
+
+    // RINL / ESAM Internship
+    const rinlKw = ["rinl", "vizag steel", "esam", "steel plant"];
+    if (rinlKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "rinl";
+        return `
+<div class="response-card">
+    <h3>🏢 RINL (Vizag Steel) Full Stack Internship</h3>
+    <p><strong>Role:</strong> Full Stack Web Development Intern (June 2025 &bull; 1 Month &bull; Offline, Visakhapatnam)</p>
+    <p>Developed <strong>Employee Shift &amp; Attendance Manager (ESAM)</strong> &mdash; a full-stack enterprise web application built using <strong>Spring Boot</strong>, <strong>Oracle Database</strong>, and REST APIs.</p>
+    <p><a href="cert-rinl.pdf" target="_blank" class="cc-link">📄 View RINL Certificate ➔</a></p>
+</div>
+`;
+    }
+
+    // InternPe Internship
+    const internpeKw = ["internpe", "java intern", "tic tac toe", "rock paper scissors"];
+    if (internpeKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "internpe";
+        return `
+<div class="response-card">
+    <h3>☕ InternPe Java Development Internship</h3>
+    <p><strong>Role:</strong> Java Developer Intern (July 2025 &bull; 1 Month &bull; Remote)</p>
+    <p>Applied Core Java and OOP principles to build functional applications including a <strong>Java Games Suite</strong> (Tic Tac Toe, Rock Paper Scissors).</p>
+    <p><a href="cert-InternPe.pdf" target="_blank" class="cc-link">📄 View InternPe Certificate ➔</a></p>
+</div>
+`;
+    }
+
+    // CISCO Certificate
+    const ciscoKw = ["cisco", "data analytics cert", "tableau", "powerbi"];
+    if (ciscoKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "cisco";
+        return `
+<div class="response-card">
+    <h3>📊 CISCO Data Analytics Essentials Certificate</h3>
+    <p>Earned certification in <strong>Data Analytics Essentials</strong> covering SQL, DBMS, Excel, Tableau, and PowerBI data visualization.</p>
+    <p><a href="cert-cisco.pdf" target="_blank" class="cc-link">📄 View CISCO Certificate ➔</a></p>
+</div>
+`;
+    }
+
+    // Direct Contact Info
+    const directContactKw = ["email", "mail", "gmail", "phone", "mobile", "number", "linkedin profile", "github link"];
+    if (directContactKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "contact_direct";
+        return `
+<div class="response-card">
+    <h3>📧 Direct Contact Information</h3>
+    <p>• <strong>Email:</strong> <a href="mailto:vedasrivamsi127@gmail.com">vedasrivamsi127@gmail.com</a></p>
+    <p>• <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sugunesh-vedasrivamsi/" target="_blank">sugunesh-vedasrivamsi</a></p>
+    <p>• <strong>GitHub:</strong> <a href="https://github.com/vedasrivamsi?tab=repositories" target="_blank">github.com/vedasrivamsi</a></p>
+</div>
+`;
+    }
+
+    /* ── 2. BROAD OVERVIEW INTENTS ── */
+
     if (hasIntent(input, "introduction")) {
 
       conversationContext.lastIntent = "introduction";
