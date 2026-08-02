@@ -181,11 +181,67 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     8. SEND HANDLER
-        — Typing indicator 500–700ms
-        — Extended intents first, then getBotResponse()
+     8b. GEMINI API HYBRID FALLBACK ENGINE
   ──────────────────────────────────────────────────────────── */
-  function handleSend(message) {
+  const GEMINI_MODEL = 'gemini-1.5-flash';
+
+  async function queryGeminiApi(userQuery) {
+    const apiKey = window.VAMAI_GEMINI_KEY || localStorage.getItem('vamai_gemini_key');
+    if (!apiKey) return null; // No API key configured, fallback to local KB
+
+    const systemPrompt = `You are VamAI, the personal AI Assistant for Sugunesh Veda Sri Vamsi.
+Profile Context:
+- Full Name: Sugunesh Veda Sri Vamsi (Vamsi)
+- Education: Final year B.Tech in Computer Science & Engineering at Andhra University College of Engineering (AUCE), Visakhapatnam (CGPA: 7.43, Graduating: 2027). Intermediate MPC at Sri Viswa Junior College (78.7%). Class 10 CBSE at Sri Krishhna Vidya Mandir (72.8%).
+- Experience: 
+  1. AI for Generation & Automation Intern at Brainovision Solutions (2 Months, Jun-Jul 2026, Hybrid Hyderabad): Developed AI Interview Simulator with local KB + Gemini API.
+  2. Java Developer Intern at InternPe (1 Month, Jul 2025, Remote): Core Java, Tic Tac Toe, Rock Paper Scissors.
+  3. Full Stack Web Development Intern at RINL Vizag Steel (1 Month, Jun 2025, Offline): Built Employee Shift & Attendance Manager (ESAM) with Spring Boot, Oracle DB, REST APIs.
+- Certifications: CISCO Data Analytics Essentials, AWS Solutions Architecture (Forage), HCL GUVI HTML & CSS, NxtWave CCBP.
+- Skills: C, Python, JavaScript, HTML5, CSS3, Bootstrap, MySQL, SQLite, Oracle DB, Git, GitHub, VS Code, Tableau, PowerBI, Excel.
+- Languages: English (Full Professional), Telugu (Native), Hindi (Conversational), Tamil (Basic).
+- Contact: Email vedasrivamsi127@gmail.com, LinkedIn: sugunesh-vedasrivamsi, GitHub: vedasrivamsi.
+
+Instructions: Answer the user's question concisely, politely, and professionally as Vamsi's AI assistant. Use simple HTML tags (like <strong>, <p>, <ul>, <li>) for clean formatting. Keep answers under 120 words.`;
+
+    try {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: 'user',
+              parts: [{ text: `${systemPrompt}\n\nUser Question: ${userQuery}` }]
+            }
+          ]
+        })
+      });
+
+      if (!response.ok) return null;
+      const data = await response.json();
+      const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (rawText) {
+        const formatted = rawText
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\n\n/g, '<br><br>')
+          .replace(/\n/g, '<br>');
+        return `<div class="response-card">
+  <h3>✨ VamAI (Gemini Powered)</h3>
+  <p>${formatted}</p>
+</div>`;
+      }
+    } catch (err) {
+      console.warn('Gemini API query failed, falling back to local KB:', err);
+    }
+    return null;
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     8. SEND HANDLER (Hybrid Local KB + Gemini API)
+  ──────────────────────────────────────────────────────────── */
+  async function handleSend(message) {
     const text = message.trim();
     if (!text || isBotTyping) return;
 
@@ -208,18 +264,32 @@
     typingEl.classList.add('vamai-typing');
     typingEl.setAttribute('aria-label', 'VamAI is typing');
 
-    // 500–700ms randomised delay (feels natural)
-    const delay = 500 + Math.floor(Math.random() * 201);
+    // 1. Check extended intents (resume, help)
+    let response = getExtendedResponse(text);
 
-    setTimeout(() => {
-      typingEl.remove();
+    // 2. Check local knowledge base intent match
+    if (!response) {
+      const localResp = getBotResponse(text);
+      const isGenericFallback = localResp.includes("I'm VamAI, Sugunesh Veda Sri Vamsi's personal portfolio assistant") ||
+                                localResp.includes("Try asking about");
 
-      const response = getExtendedResponse(text) || getBotResponse(text);
-      appendMessage(response, 'bot');
+      if (!isGenericFallback) {
+        response = localResp;
+      } else {
+        // 3. Try Gemini API query for fallback questions
+        const geminiResp = await queryGeminiApi(text);
+        response = geminiResp || localResp; // Gemini or local fallback
+      }
+    }
 
-      isBotTyping = false;
-      sendBtn.disabled = inputField.value.trim().length === 0;
-    }, delay);
+    // Natural typing delay
+    await new Promise((resolve) => setTimeout(resolve, 450));
+
+    typingEl.remove();
+    appendMessage(response, 'bot');
+
+    isBotTyping = false;
+    sendBtn.disabled = inputField.value.trim().length === 0;
   }
 
   function sendMessage() {
