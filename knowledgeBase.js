@@ -620,7 +620,7 @@ ${results.map(formatProject).join("<br>")}
     • <strong>Duration:</strong> 2021 &ndash; 2023</p>
     
     <p><strong>📖 Secondary School (Class 10 - CBSE)</strong><br>
-    Sri Krishhna Vidya Mandir<br>
+    Sri Krishna Vidya Mandir<br>
     • <strong>Score:</strong> 72.8%<br>
     • <strong>Year:</strong> 2021</p>
 </div>
