@@ -48,6 +48,10 @@ const knowledgeBase = {
       "MySQL",
       "Git",
       "GitHub",
+      "SQLite",
+      "Tableau",
+      "PowerBI",
+      "Excel",
       "Machine Learning",
       "Artificial Intelligence",
       "Object-Oriented Programming",
@@ -63,12 +67,12 @@ const knowledgeBase = {
         title: "AI Portfolio Assistant",
         company: "Personal Project",
         tech: [
-          "React",
-          "JavaScript",
-          "Tailwind CSS",
+          "HTML5",
+          "CSS3",
+          "JavaScript (Vanilla)",
           "AI Chatbot",
-          "LLMs",
-          "Prompt Engineering"
+          "Knowledge Base",
+          "UI Design"
         ],
         description:
           "Developing an intelligent AI-powered portfolio assistant capable of answering questions about my education, skills, internships, certifications, and projects. The chatbot provides recruiters and visitors with an interactive conversational experience to explore my professional profile."
@@ -136,6 +140,10 @@ const knowledgeBase = {
     ],
   
     certifications: [
+      {
+        name: "Data Analytics Essentials",
+        issuer: "CISCO"
+      },
       {
         name: "Artificial Intelligence for Generation and Automation Internship",
         issuer: "Brainovision Solutions India Pvt. Ltd."
@@ -210,10 +218,10 @@ const knowledgeBase = {
     ],
   
     languages: [
-      "English",
-      "Telugu",
-      "Hindi",
-      "Tamil"
+      "English (Full Professional)",
+      "Telugu (Native)",
+      "Hindi (Conversational)",
+      "Tamil (Basic)"
     ],
   
     hobbies: [
@@ -600,9 +608,24 @@ ${results.map(formatProject).join("<br>")}
 
       conversationContext.lastIntent = "education";
         return `
-I am pursuing <strong>${knowledgeBase.personal.education}</strong> in <strong>${knowledgeBase.personal.degree}</strong> at <strong>${knowledgeBase.personal.college}</strong>.<br><br>
-<strong>📊 CGPA:</strong> 7.36 (ongoing)<br>
-<strong>🎓 Status:</strong> Currently in my final year, expected to graduate in 2027.
+<div class="response-card">
+    <h3>🎓 Education Background</h3>
+    
+    <p><strong>🎓 B.Tech in Computer Science & Engineering</strong><br>
+    Andhra University College of Engineering (AUCE), Visakhapatnam<br>
+    • <strong>CGPA:</strong> 7.43 (ongoing)<br>
+    • <strong>Duration:</strong> 2023 &ndash; Present (Expected Graduation: 2027)</p>
+    
+    <p><strong>🏫 Intermediate (MPC)</strong><br>
+    Sri Viswa Junior College<br>
+    • <strong>Score:</strong> 78.7%<br>
+    • <strong>Duration:</strong> 2021 &ndash; 2023</p>
+    
+    <p><strong>📖 Secondary School (Class 10 - CBSE)</strong><br>
+    Sri Krishhna Vidya Mandir<br>
+    • <strong>Score:</strong> 72.8%<br>
+    • <strong>Year:</strong> 2021</p>
+</div>
 `;
     }
 
@@ -673,7 +696,7 @@ ${knowledgeBase.certifications
 <h3>🏆 Key Achievements & Highlights</h3>
 
 <p><strong>🎓 Academic:</strong><br>
-Maintaining a CGPA of <strong>7.36</strong> in B.Tech Computer Science Engineering at Andhra University College of Engineering, Visakhapatnam.</p>
+Maintaining a CGPA of <strong>7.43</strong> in B.Tech Computer Science Engineering at Andhra University College of Engineering, Visakhapatnam.</p>
 
 <p><strong>💼 Internships:</strong><br>
 Completed <strong>3 internships</strong> — at Brainovision Solutions (AI & Automation), RINL (Full Stack Development), and InternPe (Java Programming).</p>
