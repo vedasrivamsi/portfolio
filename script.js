@@ -17,10 +17,11 @@ window.addEventListener('mousemove', (e) => {
 
 // ===== Typewriter Effect =====
 const roles = [
+    'Full Stack Developer',
+    'AI Enthusiast',
     'Web Developer',
     'CS Student',
     'Problem Solver',
-    'Tech Enthusiast',
     'Quick Learner'
 ];
 let roleIndex = 0, charIndex = 0, isDeleting = false;
