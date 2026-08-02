@@ -225,16 +225,25 @@ if (contactForm) {
                 }
                 contactForm.reset();
             } else {
-                const data = await response.json();
+                // Formspree ID fallback -> compose via mailto directly to vedasrivamsi127@gmail.com
+                const nameVal = encodeURIComponent(formData.get('name') || '');
+                const subjVal = encodeURIComponent(formData.get('subject') || 'Portfolio Opportunity');
+                const msgVal = encodeURIComponent(formData.get('message') || '');
+                window.location.href = `mailto:vedasrivamsi127@gmail.com?subject=${subjVal}&body=From:%20${nameVal}%0A%0A${msgVal}`;
                 if (formStatus) {
-                    formStatus.className = 'form-status error';
-                    formStatus.innerHTML = `❌ ${data.errors ? data.errors.map(err => err.message).join(', ') : 'Oops! Something went wrong. Please try again or email directly.'}`;
+                    formStatus.className = 'form-status success';
+                    formStatus.innerHTML = `✉️ Opening your email app to send your message directly to vedasrivamsi127@gmail.com!`;
                 }
+                contactForm.reset();
             }
         } catch (error) {
+            const nameVal = encodeURIComponent(formData.get('name') || '');
+            const subjVal = encodeURIComponent(formData.get('subject') || 'Portfolio Opportunity');
+            const msgVal = encodeURIComponent(formData.get('message') || '');
+            window.location.href = `mailto:vedasrivamsi127@gmail.com?subject=${subjVal}&body=From:%20${nameVal}%0A%0A${msgVal}`;
             if (formStatus) {
-                formStatus.className = 'form-status error';
-                formStatus.innerHTML = `❌ Network error! Please check your connection or email directly.`;
+                formStatus.className = 'form-status success';
+                formStatus.innerHTML = `✉️ Opening your email app to send your message directly to vedasrivamsi127@gmail.com!`;
             }
         } finally {
             if (submitFormBtn) {
