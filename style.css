@@ -546,10 +546,12 @@ img { max-width: 100%; display: block; }
     .hero-name { font-size: 2.6rem; }
     .hero-content { order: 2; } .hero-visual { order: 1; }
     .hero-desc { margin: 0 auto 32px; }
-    .hero-buttons, .hero-socials, .hero-badge { justify-content: center; }
+    .hero-buttons, .hero-socials { justify-content: center; }
+    .hero-badge { margin: 0 auto 20px; }
     .hero-role { justify-content: center; }
     .about-image { max-width: 320px; margin: 0 auto; }
     .about-text { text-align: center; }
+    .about-languages { justify-content: center; }
     .about-buttons { justify-content: center; }
     .skills-grid, .cert-grid, .projects-grid { grid-template-columns: 1fr; }
     .section-title { font-size: 2.2rem; }
