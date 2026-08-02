@@ -191,14 +191,59 @@ skillFills.forEach(el => skillObserver.observe(el));
 
 
 
-// ===== Smooth Scroll for all anchor links =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
+// ===== Formspree Contact Form Handler =====
+const contactForm = document.getElementById('contactForm');
+const submitFormBtn = document.getElementById('submitFormBtn');
+const formStatus = document.getElementById('formStatus');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        
+        if (submitFormBtn) {
+            submitFormBtn.disabled = true;
+            submitFormBtn.innerHTML = `<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>`;
+        }
+        if (formStatus) {
+            formStatus.className = 'form-status';
+            formStatus.style.display = 'none';
+        }
+
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                if (formStatus) {
+                    formStatus.className = 'form-status success';
+                    formStatus.innerHTML = `✅ Thank you! Your message has been sent successfully. Vamsi will get back to you soon.`;
+                }
+                contactForm.reset();
+            } else {
+                const data = await response.json();
+                if (formStatus) {
+                    formStatus.className = 'form-status error';
+                    formStatus.innerHTML = `❌ ${data.errors ? data.errors.map(err => err.message).join(', ') : 'Oops! Something went wrong. Please try again or email directly.'}`;
+                }
+            }
+        } catch (error) {
+            if (formStatus) {
+                formStatus.className = 'form-status error';
+                formStatus.innerHTML = `❌ Network error! Please check your connection or email directly.`;
+            }
+        } finally {
+            if (submitFormBtn) {
+                submitFormBtn.disabled = false;
+                submitFormBtn.innerHTML = `<span>Send Message</span> <i class="fas fa-paper-plane"></i>`;
+            }
+        }
     });
-});
+}
 
 
 
