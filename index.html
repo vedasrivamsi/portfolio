@@ -24,10 +24,18 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=2.4">
+    <link rel="stylesheet" href="style.css?v=2.6">
 </head>
 
 <body>
+
+    <!-- Page Intro / Splash Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo"><span class="logo-bracket">&lt;</span>VSV<span class="logo-bracket">/&gt;</span></div>
+            <div class="loader-ring"></div>
+        </div>
+    </div>
 
     <!-- Top Scroll Progress Indicator -->
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -77,10 +85,11 @@
     <section class="hero" id="home">
         <div class="container hero-grid">
             <div class="hero-content">
-                <div class="hero-badge">
+                <a href="#contact" class="hero-badge hero-badge--link" title="Click to get in touch">
                     <span class="badge-dot"></span>
                     <span>Available for opportunities</span>
-                </div>
+                    <i class="fas fa-chevron-right badge-arrow"></i>
+                </a>
                 <h1 class="hero-name">
                     Hi, I'm <span class="gradient-text">Sugunesh</span><br>
                     Veda Sri Vamsi

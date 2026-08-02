@@ -1,3 +1,13 @@
+// ===== Page Intro / Splash Loader =====
+const pageLoaderEl = document.getElementById('pageLoader');
+function hideLoader() {
+    if (pageLoaderEl && !pageLoaderEl.classList.contains('loaded')) {
+        pageLoaderEl.classList.add('loaded');
+    }
+}
+window.addEventListener('load', () => setTimeout(hideLoader, 300));
+setTimeout(hideLoader, 1200);
+
 // ===== Parallax Blobs =====
 const blob1 = document.getElementById('blob1');
 const blob2 = document.getElementById('blob2');
