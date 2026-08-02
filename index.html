@@ -24,10 +24,13 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=2.1">
+    <link rel="stylesheet" href="style.css?v=2.4">
 </head>
 
 <body>
+
+    <!-- Top Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Animated Background -->
     <div class="bg-glow bg-glow-1" id="blob1"></div>
@@ -580,6 +583,12 @@
             <p class="footer-copy">© 2026 Sugunesh Veda Sri Vamsi. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+        <span class="back-to-top__label" id="backToTopLabel">Back to Top</span>
+    </button>
 
     <!-- ===== VamAI Floating Chat Widget ===== -->
 

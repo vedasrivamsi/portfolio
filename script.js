@@ -15,6 +15,46 @@ window.addEventListener('mousemove', (e) => {
     if (blob3) blob3.style.transform = `translate(${mouseX * 0.03}px, ${mouseY * -0.03}px)`;
 });
 
+// ===== Scroll Progress Indicator =====
+const scrollProgressEl = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (scrollProgressEl) scrollProgressEl.style.width = `${scrollPercent}%`;
+});
+
+// ===== Back to Top Button =====
+const backToTopBtn = document.getElementById('backToTop');
+const backToTopLabel = document.getElementById('backToTopLabel');
+let hasShownHint = false;
+
+window.addEventListener('scroll', () => {
+    if (backToTopBtn) {
+        if (window.scrollY > 300) {
+            if (!backToTopBtn.classList.contains('visible')) {
+                backToTopBtn.classList.add('visible');
+                if (!hasShownHint && backToTopLabel) {
+                    hasShownHint = true;
+                    backToTopLabel.classList.add('hint-visible');
+                    setTimeout(() => {
+                        backToTopLabel.classList.remove('hint-visible');
+                    }, 3500);
+                }
+            }
+        } else {
+            backToTopBtn.classList.remove('visible');
+            if (backToTopLabel) backToTopLabel.classList.remove('hint-visible');
+        }
+    }
+});
+
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
 // ===== Typewriter Effect =====
 const roles = [
     'Full Stack Developer',

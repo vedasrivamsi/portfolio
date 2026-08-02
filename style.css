@@ -33,6 +33,53 @@ img { max-width: 100%; display: block; }
 
 
 
+/* ===== Top Scroll Progress Bar ===== */
+.scroll-progress {
+    position: fixed; top: 0; left: 0;
+    width: 0%; height: 3px;
+    background: var(--gradient);
+    z-index: 10001; pointer-events: none;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+    transition: width 0.1s ease-out;
+}
+
+/* ===== Back to Top Button ===== */
+.back-to-top {
+    position: fixed; bottom: 32px; left: 32px;
+    width: 48px; height: 48px; border-radius: 14px;
+    background: var(--bg-glass); backdrop-filter: blur(10px);
+    border: 1px solid var(--border); color: var(--accent);
+    font-size: 1.1rem; cursor: pointer; z-index: 999;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transform: translateY(15px);
+    transition: var(--ease);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.back-to-top:hover {
+    background: var(--accent); color: var(--bg-1);
+    border-color: var(--accent); transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+}
+.back-to-top.visible {
+    opacity: 1; visibility: visible; transform: translateY(0);
+}
+.back-to-top__label {
+    position: absolute; bottom: 58px; left: 0;
+    background: var(--bg-card); color: var(--accent);
+    font-size: 0.72rem; font-weight: 600;
+    padding: 5px 10px; border-radius: 8px;
+    border: 1px solid var(--border); white-space: nowrap;
+    pointer-events: none; opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+.back-to-top:hover .back-to-top__label,
+.back-to-top__label.hint-visible {
+    opacity: 1; transform: translateY(0);
+}
+
 /* ===== Animated Background Blobs ===== */
 .bg-glow {
     position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.15;
