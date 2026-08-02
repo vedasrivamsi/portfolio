@@ -35,10 +35,8 @@ const knowledgeBase = {
     ],
   
     skills: [
-      "Java",
       "Python",
       "C",
-      "C++",
       "JavaScript",
       "HTML5",
       "CSS3",
