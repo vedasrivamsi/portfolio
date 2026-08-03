@@ -411,8 +411,7 @@
                             <span>Collections</span><span>Exception Handling</span>
                         </div>
                         <div class="exp-actions">
-                            <a href="cert-InternPe.pdf" target="_blank" class="exp-cert-btn"
-                                title="View InternPe Internship Certificate">
+                            <a href="cert-InternPe.pdf" target="_blank" class="exp-cert-btn cert-preview-btn" data-cert-url="cert-InternPe.pdf" data-cert-title="InternPe — Java Programmer Internship Certificate" title="View InternPe Internship Certificate">
                                 <i class="fas fa-certificate"></i> View Certificate
                             </a>
                         </div>
@@ -462,8 +461,7 @@
                             <span>JavaScript</span><span>REST APIs</span>
                         </div>
                         <div class="exp-actions">
-                            <a href="cert-rinl.pdf" target="_blank" class="exp-cert-btn"
-                                title="View RINL Internship Certificate">
+                            <a href="cert-rinl.pdf" target="_blank" class="exp-cert-btn cert-preview-btn" data-cert-url="cert-rinl.pdf" data-cert-title="RINL (Vizag Steel) — Full Stack Internship Certificate" title="View RINL Internship Certificate">
                                 <i class="fas fa-certificate"></i> View Certificate
                             </a>
                         </div>
@@ -488,9 +486,9 @@
                     <div class="cert-tags"><span>Responsive Web</span><span>Dynamic
                             Web</span><span>SQL</span><span>Python</span></div>
                     <div class="cert-links">
-                        <a href="cert-nxtwave-responsive.pdf" target="_blank" class="cert-link">Responsive Web</a>
-                        <a href="cert-nxtwave-static.pdf" target="_blank" class="cert-link">Static Web</a>
-                        <a href="cert-nxtwave-db.png" target="_blank" class="cert-link">Database</a>
+                        <a href="cert-nxtwave-responsive.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-nxtwave-responsive.pdf" data-cert-title="NxtWave — Build Your Own Responsive Website">Responsive Web</a>
+                        <a href="cert-nxtwave-static.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-nxtwave-static.pdf" data-cert-title="NxtWave — Build Your Own Static Website">Static Web</a>
+                        <a href="cert-nxtwave-db.png" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-nxtwave-db.png" data-cert-title="NxtWave — Introduction to Databases">Database</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
@@ -499,7 +497,7 @@
                     <p>Solutions Architecture Job Simulation</p>
                     <div class="cert-tags"><span>Cloud Architecture</span><span>AWS</span></div>
                     <div class="cert-links">
-                        <a href="cert-aws.pdf" target="_blank" class="cert-link">View Certificate</a>
+                        <a href="cert-aws.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-aws.pdf" data-cert-title="AWS (Forage) — Solutions Architecture Job Simulation">View Certificate</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
@@ -508,7 +506,7 @@
                     <p>HTML & CSS Certification</p>
                     <div class="cert-tags"><span>HTML</span><span>CSS</span></div>
                     <div class="cert-links">
-                        <a href="cert-guvi.png" target="_blank" class="cert-link">View Certificate</a>
+                        <a href="cert-guvi.png" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-guvi.png" data-cert-title="HCL GUVI — HTML & CSS Certification">View Certificate</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
@@ -520,7 +518,7 @@
                         <span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span>
                     </div>
                     <div class="cert-links">
-                        <a href="cert-studenttribe.png" target="_blank" class="cert-link">View Certificate</a>
+                        <a href="cert-studenttribe.png" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-studenttribe.png" data-cert-title="StudentTribe — MERN Stack Bootcamp">View Certificate</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
@@ -532,7 +530,7 @@
                             Analytics</span><span>SQL</span><span>DBMS</span><span>Excel</span><span>Tableau</span><span>PowerBI</span>
                     </div>
                     <div class="cert-links">
-                        <a href="cert-cisco.pdf" target="_blank" class="cert-link">View Certificate</a>
+                        <a href="cert-cisco.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-cisco.pdf" data-cert-title="CISCO — Data Analytics Essentials">View Certificate</a>
                     </div>
                 </div>
             </div>
@@ -592,9 +590,13 @@
                     <div class="contact-card" data-aos="fade-up">
                         <div class="cc-icon email"><i class="fas fa-envelope"></i></div>
                         <h4>Email</h4>
-                        <p>vedasrivamsi127@gmail.com</p>
-                        <a href="mailto:vedasrivamsi127@gmail.com" class="cc-link">Send Email <i
-                                class="fas fa-arrow-right"></i></a>
+                        <p id="emailText">vedasrivamsi127@gmail.com</p>
+                        <div class="cc-actions">
+                            <a href="mailto:vedasrivamsi127@gmail.com" class="cc-link">Send Email <i class="fas fa-arrow-right"></i></a>
+                            <button class="cc-copy-btn" id="copyEmailBtn" title="Copy Email to Clipboard">
+                                <i class="far fa-copy"></i> <span>Copy Email</span>
+                            </button>
+                        </div>
                     </div>
                     <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="cc-icon linkedin"><i class="fab fa-linkedin-in"></i></div>
@@ -726,6 +728,34 @@
                 <iframe src="resume.pdf#toolbar=0" title="Resume Preview" class="resume-iframe"></iframe>
             </div>
         </div>
+    </div>
+
+    <!-- ===== Certificate Preview Modal ===== -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-label="Certificate Preview" aria-hidden="true">
+        <div class="cert-modal__backdrop" id="certModalBackdrop"></div>
+        <div class="cert-modal__container">
+            <div class="cert-modal__header">
+                <div class="cert-modal__title">
+                    <i class="fas fa-certificate"></i>
+                    <span id="certModalTitle">Certificate Preview</span>
+                </div>
+                <div class="cert-modal__actions">
+                    <a href="#" download id="certModalDownloadBtn" class="btn btn-primary btn-sm" target="_blank">
+                        <i class="fas fa-download"></i> <span>Download</span>
+                    </a>
+                    <button class="cert-modal__close" id="certModalClose" aria-label="Close modal">✕</button>
+                </div>
+            </div>
+            <div class="cert-modal__body" id="certModalBody">
+                <!-- Dynamic Content (iframe for PDF, img for PNG/JPG) -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification" role="alert" aria-live="polite">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Copied to clipboard!</span>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>

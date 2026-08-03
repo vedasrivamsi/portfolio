@@ -246,3 +246,103 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// ===== Toast Notification Helper =====
+const toastEl = document.getElementById('toastNotification');
+const toastMessageEl = document.getElementById('toastMessage');
+let toastTimer = null;
+
+function showToast(message) {
+    if (!toastEl || !toastMessageEl) return;
+    toastMessageEl.textContent = message;
+    toastEl.classList.add('active');
+
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toastEl.classList.remove('active');
+    }, 3200);
+}
+
+// ===== Certificate PDF & Image Preview Modal Controller =====
+const certModal = document.getElementById('certModal');
+const certModalClose = document.getElementById('certModalClose');
+const certModalBackdrop = document.getElementById('certModalBackdrop');
+const certModalTitle = document.getElementById('certModalTitle');
+const certModalBody = document.getElementById('certModalBody');
+const certModalDownloadBtn = document.getElementById('certModalDownloadBtn');
+
+function openCertModal(url, title) {
+    if (!certModal || !certModalBody) return;
+
+    if (certModalTitle) certModalTitle.textContent = title || 'Certificate Preview';
+    if (certModalDownloadBtn) {
+        certModalDownloadBtn.setAttribute('href', url);
+        const filename = url.split('/').pop();
+        certModalDownloadBtn.setAttribute('download', filename);
+    }
+
+    const isImage = url.toLowerCase().endsWith('.png') || url.toLowerCase().endsWith('.jpg') || url.toLowerCase().endsWith('.jpeg');
+    
+    if (isImage) {
+        certModalBody.innerHTML = `<img src="${url}" alt="${title}" class="cert-img-preview">`;
+    } else {
+        certModalBody.innerHTML = `<iframe src="${url}#toolbar=0" title="${title}" class="cert-iframe"></iframe>`;
+    }
+
+    certModal.classList.add('active');
+    certModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCertModal() {
+    if (certModal) {
+        certModal.classList.remove('active');
+        certModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (certModalBody) certModalBody.innerHTML = '';
+    }
+}
+
+document.querySelectorAll('.cert-preview-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const url = btn.dataset.certUrl || btn.getAttribute('href');
+        const title = btn.dataset.certTitle || 'Certificate Preview';
+        if (url && url !== '#') {
+            e.preventDefault();
+            openCertModal(url, title);
+        }
+    });
+});
+
+if (certModalClose) certModalClose.addEventListener('click', closeCertModal);
+if (certModalBackdrop) certModalBackdrop.addEventListener('click', closeCertModal);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && certModal && certModal.classList.contains('active')) {
+        closeCertModal();
+    }
+});
+
+// ===== Copy Email to Clipboard =====
+const copyEmailBtn = document.getElementById('copyEmailBtn');
+const emailAddress = 'vedasrivamsi127@gmail.com';
+
+if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(emailAddress);
+            copyEmailBtn.classList.add('copied');
+            copyEmailBtn.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+            showToast('📋 Email copied to clipboard!');
+
+            setTimeout(() => {
+                copyEmailBtn.classList.remove('copied');
+                copyEmailBtn.innerHTML = '<i class="far fa-copy"></i> <span>Copy Email</span>';
+            }, 2500);
+        } catch (err) {
+            console.error('Failed to copy email:', err);
+            showToast('📧 vedasrivamsi127@gmail.com');
+        }
+    });
+}
+
+
