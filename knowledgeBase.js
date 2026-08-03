@@ -62,18 +62,21 @@ const knowledgeBase = {
   
     projects: [
       {
-        title: "AI Portfolio Assistant",
-        company: "Personal Project",
+        title: "AI Interview Simulator",
+        company: "Brainovision Solutions India Pvt. Ltd.",
         tech: [
-          "HTML5",
-          "CSS3",
-          "JavaScript (Vanilla)",
-          "AI Chatbot",
-          "Knowledge Base",
-          "UI Design"
+          "Python",
+          "Streamlit",
+          "Gemini API",
+          "NLP",
+          "SLM",
+          "TF-IDF",
+          "Knowledge Base"
         ],
         description:
-          "Developing an intelligent AI-powered portfolio assistant capable of answering questions about my education, skills, internships, certifications, and projects. The chatbot provides recruiters and visitors with an interactive conversational experience to explore my professional profile."
+          "A smart AI-powered mock interview platform built during the Brainovision internship. Features multi-engine evaluation (Offline NLP / Gemini API / fine-tuned weights), live per-answer scoring out of 100, technical insight comparison with expected answers, and subject-based customization.",
+        liveUrl: "https://ai-interview-simulator-vedasrivamsi.streamlit.app/",
+        githubUrl: "https://github.com/vedasrivamsi/AI-Interview-Simulator"
       },
   
       {
@@ -88,7 +91,9 @@ const knowledgeBase = {
           "Razorpay"
         ],
         description:
-          "Designed and developed a web-based Restaurant Management System that simplifies restaurant operations including digital menu management, online food ordering, billing, payment integration using Razorpay, customer order tracking, and delivery management. The system improves operational efficiency while providing a seamless customer experience."
+          "Designed and developed a web-based Restaurant Management System that simplifies restaurant operations including digital menu management, online food ordering, billing, payment integration using Razorpay, customer order tracking, and delivery management. The system improves operational efficiency while providing a seamless customer experience.",
+        githubUrl: null,
+        liveUrl: null
       },
   
       {
@@ -606,6 +611,24 @@ ${results.map(formatProject).join("<br>")}
     <p>🎓 <strong>B.Tech (CSE) &mdash; AUCE:</strong> CGPA <strong>7.43</strong> (Ongoing, 2023 &ndash; Present)</p>
     <p>🏫 <strong>Intermediate (MPC) &mdash; Sri Viswa:</strong> <strong>78.7%</strong> (2021 &ndash; 2023)</p>
     <p>📖 <strong>Class 10 (CBSE) &mdash; Sri Krishna Vidya Mandir:</strong> <strong>72.8%</strong> (2021)</p>
+</div>
+`;
+    }
+
+    // AI Interview Simulator (Brainovision Project)
+    const aiSimKw = ["ai interview", "interview simulator", "mock interview", "streamlit", "ai simulator", "interview simulator", "interview app"];
+    if (aiSimKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "ai_simulator";
+        return `
+<div class="response-card">
+    <h3>🤖 AI Interview Simulator</h3>
+    <p><strong>Built During:</strong> Brainovision Solutions Internship (Jun–Jul 2026)</p>
+    <p><strong>🛠 Tech Stack:</strong> Python • Streamlit • Gemini API • NLP • SLM • TF-IDF</p>
+    <p>A smart mock interview platform with <strong>multi-engine evaluation</strong> (Offline NLP / Gemini API), <strong>live per-answer scoring</strong> out of 100, and <strong>technical insight feedback</strong>.</p>
+    <p>
+        <a href="https://ai-interview-simulator-vedasrivamsi.streamlit.app/" target="_blank" class="cc-link">🚀 Live Demo ➔</a> &nbsp;
+        <a href="https://github.com/vedasrivamsi/AI-Interview-Simulator" target="_blank" class="cc-link">💻 GitHub ➔</a>
+    </p>
 </div>
 `;
     }
