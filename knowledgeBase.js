@@ -659,64 +659,122 @@ ${results.map(formatProject).join("<br>")}
 
     /* ── 1. SPECIFIC MICRO-INTENTS (Precision Answers) ── */
 
-    // ACADEMIC SCORES -- Context-Aware Sub-Intents (most-specific first)
-
-    // 1. B.Tech / CGPA / College specific
-    const btechKw = ["btech", "b.tech", "cgpa", "gpa", "college cgpa", "university", "engineering cgpa", "auce", "andhra university", "current cgpa", "degree cgpa"];
-    if (btechKw.some(kw => input.includes(kw))) {
-        conversationContext.lastIntent = "btech_cgpa";
-        return `
-<div class="response-card">
-    <h3>&#127891; B.Tech CGPA</h3>
-    <p><strong>Degree:</strong> B.Tech in Computer Science &amp; Engineering</p>
-    <p><strong>College:</strong> Andhra University College of Engineering (AUCE), Visakhapatnam</p>
-    <p><strong>CGPA:</strong> <strong>7.43</strong> &mdash; Ongoing (2023 &ndash; Present, Graduating 2027)</p>
-</div>
-`;
-    }
-
-    // 2. Intermediate / 12th / Junior College specific
-    const interKw = ["intermediate", "inter marks", "12th", "plus two", "+2", "junior college", "sri viswa", "mpc", "11th", "intermediate percentage"];
-    if (interKw.some(kw => input.includes(kw))) {
-        conversationContext.lastIntent = "inter_score";
-        return `
-<div class="response-card">
-    <h3>&#127979; Intermediate Score</h3>
-    <p><strong>College:</strong> Sri Viswa Junior College</p>
-    <p><strong>Stream:</strong> MPC (Maths, Physics &amp; Chemistry)</p>
-    <p><strong>Score:</strong> <strong>78.7%</strong> &mdash; (2021 &ndash; 2023)</p>
-</div>
-`;
-    }
-
-    // 3. Class 10 / SSC / School specific
-    const class10Kw = ["10th", "class 10", "ssc", "school marks", "secondary school", "cbse", "sri krishna", "matric", "10th percentage", "school percentage", "class10"];
-    if (class10Kw.some(kw => input.includes(kw))) {
-        conversationContext.lastIntent = "class10_score";
-        return `
-<div class="response-card">
-    <h3>&#128218; Class 10 Score</h3>
-    <p><strong>School:</strong> Sri Krishna Vidya Mandir</p>
-    <p><strong>Board:</strong> CBSE</p>
-    <p><strong>Score:</strong> <strong>72.8%</strong> &mdash; Passed 2021</p>
-</div>
-`;
-    }
-
-    // 4. General / All academic scores (vague queries)
-    const allScoresKw = ["marks", "percentage", "score", "grades", "academic record", "academic performance", "all marks", "all scores"];
-    if (allScoresKw.some(kw => input.includes(kw))) {
-        conversationContext.lastIntent = "all_scores";
-        return `
-<div class="response-card">
-    <h3>&#128202; Full Academic Summary</h3>
-    <p>&#127891; <strong>B.Tech (CSE) &mdash; AUCE:</strong> CGPA <strong>7.43</strong> (Ongoing, 2023 &ndash; Present)</p>
-    <p>&#127979; <strong>Intermediate (MPC) &mdash; Sri Viswa:</strong> <strong>78.7%</strong> (2021 &ndash; 2023)</p>
-    <p>&#128218; <strong>Class 10 (CBSE) &mdash; Sri Krishna Vidya Mandir:</strong> <strong>72.8%</strong> (2021)</p>
-</div>
-`;
-    }
-
+    // ACADEMIC SCORES -- Context-Aware Sub-Intents (most-specific first)
+
+
+
+    // 1. B.Tech / CGPA / College specific
+
+    const btechKw = ["btech", "b.tech", "cgpa", "gpa", "college cgpa", "university", "engineering cgpa", "auce", "andhra university", "current cgpa", "degree cgpa"];
+
+    if (btechKw.some(kw => input.includes(kw))) {
+
+        conversationContext.lastIntent = "btech_cgpa";
+
+        return `
+
+<div class="response-card">
+
+    <h3>&#127891; B.Tech CGPA</h3>
+
+    <p><strong>Degree:</strong> B.Tech in Computer Science &amp; Engineering</p>
+
+    <p><strong>College:</strong> Andhra University College of Engineering (AUCE), Visakhapatnam</p>
+
+    <p><strong>CGPA:</strong> <strong>7.43</strong> &mdash; Ongoing (2023 &ndash; Present, Graduating 2027)</p>
+
+</div>
+
+`;
+
+    }
+
+
+
+    // 2. Intermediate / 12th / Junior College specific
+
+    const interKw = ["intermediate", "inter marks", "12th", "plus two", "+2", "junior college", "sri viswa", "mpc", "11th", "intermediate percentage"];
+
+    if (interKw.some(kw => input.includes(kw))) {
+
+        conversationContext.lastIntent = "inter_score";
+
+        return `
+
+<div class="response-card">
+
+    <h3>&#127979; Intermediate Score</h3>
+
+    <p><strong>College:</strong> Sri Viswa Junior College</p>
+
+    <p><strong>Stream:</strong> MPC (Maths, Physics &amp; Chemistry)</p>
+
+    <p><strong>Score:</strong> <strong>78.7%</strong> &mdash; (2021 &ndash; 2023)</p>
+
+</div>
+
+`;
+
+    }
+
+
+
+    // 3. Class 10 / SSC / School specific
+
+    const class10Kw = ["10th", "class 10", "ssc", "school marks", "secondary school", "cbse", "sri krishna", "matric", "10th percentage", "school percentage", "class10"];
+
+    if (class10Kw.some(kw => input.includes(kw))) {
+
+        conversationContext.lastIntent = "class10_score";
+
+        return `
+
+<div class="response-card">
+
+    <h3>&#128218; Class 10 Score</h3>
+
+    <p><strong>School:</strong> Sri Krishna Vidya Mandir</p>
+
+    <p><strong>Board:</strong> CBSE</p>
+
+    <p><strong>Score:</strong> <strong>72.8%</strong> &mdash; Passed 2021</p>
+
+</div>
+
+`;
+
+    }
+
+
+
+    // 4. General / All academic scores (vague queries)
+
+    const allScoresKw = ["marks", "percentage", "score", "grades", "academic record", "academic performance", "all marks", "all scores"];
+
+    if (allScoresKw.some(kw => input.includes(kw))) {
+
+        conversationContext.lastIntent = "all_scores";
+
+        return `
+
+<div class="response-card">
+
+    <h3>&#128202; Full Academic Summary</h3>
+
+    <p>&#127891; <strong>B.Tech (CSE) &mdash; AUCE:</strong> CGPA <strong>7.43</strong> (Ongoing, 2023 &ndash; Present)</p>
+
+    <p>&#127979; <strong>Intermediate (MPC) &mdash; Sri Viswa:</strong> <strong>78.7%</strong> (2021 &ndash; 2023)</p>
+
+    <p>&#128218; <strong>Class 10 (CBSE) &mdash; Sri Krishna Vidya Mandir:</strong> <strong>72.8%</strong> (2021)</p>
+
+</div>
+
+`;
+
+    }
+
+
+
     // AI Interview Simulator (Brainovision Project)
     const aiSimKw = ["ai interview", "interview simulator", "mock interview", "streamlit", "ai simulator", "interview simulator", "interview app"];
     if (aiSimKw.some(kw => input.includes(kw))) {
@@ -831,6 +889,155 @@ ${results.map(formatProject).join("<br>")}
 </div>
 `;
     }
+
+        // ── SPECIFIC CERTIFICATION MICRO-INTENTS ──
+
+    // AWS Certification
+    const awsKw = ["aws", "amazon web services", "forage", "cloud architecture cert", "aws cert"];
+    if (awsKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "aws_cert";
+        return `
+<div class="response-card">
+    <h3>☁️ AWS (Forage) Solutions Architecture</h3>
+    <p>Completed the <strong>AWS Solutions Architecture Job Simulation</strong> on Forage, covering cloud design principles, scalable infrastructure, and AWS core services.</p>
+    <p><a href="cert-aws.pdf" target="_blank" class="cc-link">📄 View AWS Certificate ➔</a></p>
+</div>
+`;
+    }
+
+    // NxtWave Certifications
+    const nxtwaveKw = ["nxtwave", "ccbp", "static website cert", "responsive website cert", "database cert"];
+    if (nxtwaveKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "nxtwave_cert";
+        return `
+<div class="response-card">
+    <h3>🚀 NxtWave CCBP 4.0 Certifications</h3>
+    <p>Completed intensive web development & database certification courses:</p>
+    <p>• <a href="cert-nxtwave-responsive.pdf" target="_blank" class="cc-link">📄 Responsive Web Design Cert ➔</a></p>
+    <p>• <a href="cert-nxtwave-static.pdf" target="_blank" class="cc-link">📄 Static Web Design Cert ➔</a></p>
+    <p>• <a href="cert-nxtwave-db.png" target="_blank" class="cc-link">🖼️ Database (SQL) Cert ➔</a></p>
+</div>
+`;
+    }
+
+    // HCL GUVI Certification
+    const guviKw = ["guvi", "hcl guvi", "html css cert", "guvi cert"];
+    if (guviKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "guvi_cert";
+        return `
+<div class="response-card">
+    <h3>🌐 HCL GUVI — HTML &amp; CSS Certification</h3>
+    <p>Certified in HTML5 &amp; CSS3 fundamentals and modern web layout techniques by GUVI &amp; HCL.</p>
+    <p><a href="cert-guvi.png" target="_blank" class="cc-link">🖼️ View GUVI Certificate ➔</a></p>
+</div>
+`;
+    }
+
+    // StudentTribe Certification
+    const studentTribeKw = ["studenttribe", "student tribe", "mern cert", "mern bootcamp"];
+    if (studentTribeKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "studenttribe_cert";
+        return `
+<div class="response-card">
+    <h3>🔥 StudentTribe — MERN Stack Bootcamp</h3>
+    <p>Completed hands-on MERN Stack Bootcamp covering MongoDB, Express.js, React.js, and Node.js web development.</p>
+    <p><a href="cert-studenttribe.png" target="_blank" class="cc-link">🖼️ View StudentTribe Certificate ➔</a></p>
+</div>
+`;
+    }
+
+    // ── SPECIFIC INTERNSHIP SUB-INTENTS ──
+
+    // Internship Locations & Modes
+    const internModeKw = ["internship location", "internship mode", "remote internship", "offline internship", "hybrid internship", "where were your internships", "where did you intern"];
+    if (internModeKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "internship_modes";
+        return `
+<div class="response-card">
+    <h3>📍 Internship Locations &amp; Work Modes</h3>
+    <p>• 🤖 <strong>Brainovision:</strong> Hybrid &bull; Hyderabad (2 Months, Jun-Jul 2026)</p>
+    <p>• 🏢 <strong>RINL (Vizag Steel):</strong> Offline &bull; Visakhapatnam (1 Month, June 2025)</p>
+    <p>• ☕ <strong>InternPe:</strong> Remote / Online (1 Month, July 2025)</p>
+</div>
+`;
+    }
+
+    // Internship Duration
+    const internDurKw = ["internship duration", "how long were your internships", "total internship experience", "months of internship"];
+    if (internDurKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "internship_duration";
+        return `
+<div class="response-card">
+    <h3>⏱️ Internship Experience Duration</h3>
+    <p>Vamsi has completed <strong>3 internships</strong> totaling <strong>4 months</strong> of practical experience:</p>
+    <p>• 🤖 <strong>Brainovision:</strong> 2 Months (Jun–Jul 2026)</p>
+    <p>• 🏢 <strong>RINL Steel Plant:</strong> 1 Month (June 2025)</p>
+    <p>• ☕ <strong>InternPe:</strong> 1 Month (July 2025)</p>
+</div>
+`;
+    }
+
+    // ── SPECIFIC SKILLS SUB-INTENTS ──
+
+    // Databases Query
+    const dbQueryKw = ["database", "databases", "mysql", "oracle db", "sqlite", "sql database", "what databases"];
+    if (dbQueryKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "databases_skill";
+        return `
+<div class="response-card">
+    <h3>🗄️ Database Skills</h3>
+    <p>• <strong>MySQL:</strong> Relational Database Management, querying, indexing</p>
+    <p>• <strong>Oracle Database:</strong> Enterprise DB integration with Spring Boot (used at RINL)</p>
+    <p>• <strong>SQLite:</strong> Lightweight embedded database management</p>
+    <p>• <strong>SQL:</strong> Strong in DDL, DML, joins, subqueries, and DBMS concepts</p>
+</div>
+`;
+    }
+
+    // Tools & Analytics Query
+    const toolsQueryKw = ["developer tools", "tools you use", "what tools", "powerbi", "tableau", "git", "github", "ide", "vscode"];
+    if (toolsQueryKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "tools_skill";
+        return `
+<div class="response-card">
+    <h3>🛠️ Developer Tools &amp; Analytics</h3>
+    <p>• <strong>Version Control:</strong> Git, GitHub</p>
+    <p>• <strong>IDEs &amp; Editors:</strong> VS Code, AntiGravity</p>
+    <p>• <strong>Data Analytics:</strong> Tableau, PowerBI, Excel (CISCO Certified)</p>
+    <p>• <strong>Productivity:</strong> MS Office Suite (Word, Excel, PowerPoint)</p>
+</div>
+`;
+    }
+
+    // Specific Tech Enquiry: Python
+    const pythonQueryKw = ["do you know python", "python experience", "python programming", "python project"];
+    if (pythonQueryKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "python_skill";
+        return `
+<div class="response-card">
+    <h3>🐍 Python Expertise</h3>
+    <p>Vamsi uses <strong>Python</strong> extensively for AI, NLP, and Web Apps!</p>
+    <p>• <strong>Flagship Project:</strong> <a href="https://ai-interview-simulator-vedasrivamsi.streamlit.app/" target="_blank">AI Interview Simulator</a> built with Python &amp; Streamlit.</p>
+    <p>• <strong>AI &amp; ML:</strong> Experience with SLMs, LLMs, Gemini API, TF-IDF cosine similarity, and Prompt Engineering.</p>
+</div>
+`;
+    }
+
+    // Specific Tech Enquiry: Java
+    const javaQueryKw = ["do you know java", "java experience", "java programming", "java projects"];
+    if (javaQueryKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "java_skill";
+        return `
+<div class="response-card">
+    <h3>☕ Java Expertise</h3>
+    <p>Vamsi has strong foundation in <strong>Core Java</strong> and <strong>Object-Oriented Programming (OOP)</strong>!</p>
+    <p>• <strong>Internship:</strong> Java Developer Intern at InternPe.</p>
+    <p>• <strong>Projects Built:</strong> Tic Tac Toe, Rock Paper Scissors, Connect 4.</p>
+    <p>• <strong>Frameworks &amp; Concepts:</strong> Collections, Exception Handling, File Handling, Spring Boot (used at RINL).</p>
+</div>
+`;
+    }
+
 
     /* ── 2. BROAD OVERVIEW INTENTS ── */
 
