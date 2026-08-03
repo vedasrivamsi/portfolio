@@ -192,8 +192,57 @@ skillFills.forEach(el => skillObserver.observe(el));
 // ===== Smooth Scroll for all anchor links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        const targetId = anchor.getAttribute('href');
+        if (targetId && targetId !== '#') {
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     });
 });
+
+// ===== Resume PDF Preview Modal Controller =====
+const viewResumeBtn = document.getElementById('viewResumeBtn');
+const resumeModal = document.getElementById('resumeModal');
+const resumeModalClose = document.getElementById('resumeModalClose');
+const resumeModalBackdrop = document.getElementById('resumeModalBackdrop');
+
+function openResumeModal() {
+    if (resumeModal) {
+        resumeModal.classList.add('active');
+        resumeModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeResumeModal() {
+    if (resumeModal) {
+        resumeModal.classList.remove('active');
+        resumeModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+}
+
+if (viewResumeBtn) {
+    viewResumeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openResumeModal();
+    });
+}
+
+if (resumeModalClose) {
+    resumeModalClose.addEventListener('click', closeResumeModal);
+}
+
+if (resumeModalBackdrop) {
+    resumeModalBackdrop.addEventListener('click', closeResumeModal);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && resumeModal && resumeModal.classList.contains('active')) {
+        closeResumeModal();
+    }
+});
+

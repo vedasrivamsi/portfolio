@@ -1059,6 +1059,164 @@ img { max-width: 100%; display: block; }
     .vamai-input-area { padding: 8px 10px 12px; }
     .vamai-msg__bubble { font-size: 0.82rem; }
 }
+
+/* ── Interactive Stat Cards & Profile Tags ───────────────── */
+.about-stats .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.02);
+}
+.about-stats .stat:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+    background: rgba(212, 175, 55, 0.06);
+}
+.about-stats .stat:hover .stat-lbl {
+    color: var(--accent);
+}
+
+.profile-tags .p-tag {
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.profile-tags .p-tag:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    background: rgba(212, 175, 55, 0.12);
+}
+
+/* ── Resume PDF Preview Modal ────────────────────────────── */
+.resume-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.resume-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+.resume-modal__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 15, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.resume-modal__container {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    height: 88vh;
+    background: #12121a;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.15);
+    transform: scale(0.94) translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.resume-modal.active .resume-modal__container {
+    transform: scale(1) translateY(0);
+}
+.resume-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #181824;
+    border-bottom: 1px solid var(--border);
+}
+.resume-modal__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-head);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-1);
+}
+.resume-modal__title i {
+    color: #ef4444;
+    font-size: 1.2rem;
+}
+.resume-modal__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+}
+.resume-modal__close {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+.resume-modal__close:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #ef4444;
+}
+.resume-modal__body {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    background: #1a1a24;
+}
+.resume-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .resume-modal__container {
+        width: 95%;
+        height: 92vh;
+    }
+    .resume-modal__header {
+        padding: 12px 16px;
+    }
+    .resume-modal__title span {
+        font-size: 0.85rem;
+    }
+}
+
 @media (max-width: 320px) {
     .vamai-header__name { font-size: 0.85rem; }
     .vamai-header__status { font-size: 0.65rem; }

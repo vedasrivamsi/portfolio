@@ -28,7 +28,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=4.1">
+    <link rel="stylesheet" href="style.css?v=4.2">
 </head>
 
 <body>
@@ -129,9 +129,9 @@
                         <p>B.Tech CSE • CGPA 7.43</p>
                     </div>
                     <div class="profile-tags">
-                        <span class="p-tag"><i class="fas fa-code"></i> Developer</span>
-                        <span class="p-tag"><i class="fas fa-graduation-cap"></i> CS Student</span>
-                        <span class="p-tag"><i class="fas fa-lightbulb"></i> Learner</span>
+                        <a href="#skills" class="p-tag"><i class="fas fa-code"></i> Developer</a>
+                        <a href="#education" class="p-tag"><i class="fas fa-graduation-cap"></i> CS Student</a>
+                        <a href="#certifications" class="p-tag"><i class="fas fa-lightbulb"></i> Learner</a>
                     </div>
                 </div>
             </div>
@@ -159,14 +159,10 @@
                         find me chilling around the beach on weekends. I believe balancing work and play keeps the
                         creativity flowing.</p>
                     <div class="about-stats">
-                        <div class="stat"><span class="stat-num" data-count="7.43">0</span><span
-                                class="stat-lbl">CGPA</span></div>
-                        <div class="stat"><span class="stat-num" data-count="20">0</span><span
-                                class="stat-lbl">SKILLS</span></div>
-                        <div class="stat"><span class="stat-num" data-count="9">0</span><span
-                                class="stat-lbl">CERTS</span></div>
-                        <div class="stat"><span class="stat-num" data-count="3">0</span><span
-                                class="stat-lbl">INTERNSHIPS</span></div>
+                        <a href="#education" class="stat" title="Click to view Education"><span class="stat-num" data-count="7.43">0</span><span class="stat-lbl">CGPA</span></a>
+                        <a href="#skills" class="stat" title="Click to view Skills"><span class="stat-num" data-count="20">0</span><span class="stat-lbl">SKILLS</span></a>
+                        <a href="#certifications" class="stat" title="Click to view Certifications"><span class="stat-num" data-count="9">0</span><span class="stat-lbl">CERTS</span></a>
+                        <a href="#experience" class="stat" title="Click to view Internships"><span class="stat-num" data-count="3">0</span><span class="stat-lbl">INTERNSHIPS</span></a>
                     </div>
                     <div class="about-languages">
                         <span class="lang-title"><i class="fas fa-language"></i> Languages:</span>
@@ -178,8 +174,7 @@
                     <div class="about-buttons">
                         <a href="resume.pdf" download="Sugunesh_Veda_Sri_Vamsi_Resume.pdf" class="btn btn-primary"
                             id="resumeBtn"><span>Download Resume</span><i class="fas fa-download"></i></a>
-                        <a href="resume.pdf" class="btn btn-glass" id="viewResumeBtn" target="_blank"><span>View
-                                Resume</span><i class="fas fa-eye"></i></a>
+                        <button class="btn btn-glass" id="viewResumeBtn"><span>View Resume</span><i class="fas fa-eye"></i></button>
                     </div>
                 </div>
             </div>
@@ -710,6 +705,28 @@
 
     </div>
     <!-- ===== End VamAI Widget ===== -->
+
+    <!-- ===== Resume PDF Preview Modal ===== -->
+    <div class="resume-modal" id="resumeModal" role="dialog" aria-label="Resume Preview" aria-hidden="true">
+        <div class="resume-modal__backdrop" id="resumeModalBackdrop"></div>
+        <div class="resume-modal__container">
+            <div class="resume-modal__header">
+                <div class="resume-modal__title">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Sugunesh Veda Sri Vamsi — Resume</span>
+                </div>
+                <div class="resume-modal__actions">
+                    <a href="resume.pdf" download="Sugunesh_Veda_Sri_Vamsi_Resume.pdf" class="btn btn-primary btn-sm">
+                        <i class="fas fa-download"></i> <span>Download</span>
+                    </a>
+                    <button class="resume-modal__close" id="resumeModalClose" aria-label="Close modal">✕</button>
+                </div>
+            </div>
+            <div class="resume-modal__body">
+                <iframe src="resume.pdf#toolbar=0" title="Resume Preview" class="resume-iframe"></iframe>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
