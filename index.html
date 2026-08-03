@@ -28,7 +28,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=4.2">
+    <link rel="stylesheet" href="style.css?v=4.3">
 </head>
 
 <body>
@@ -542,23 +542,34 @@
         <div class="container">
             <h2 class="section-title">My <span class="gradient-text">Projects</span></h2>
             <p class="section-subtitle">Things I've built so far</p>
+            <!-- Category Filter Tabs -->
+            <div class="project-filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Projects</button>
+                <button class="filter-tab" data-filter="ai">🤖 AI &amp; ML</button>
+                <button class="filter-tab" data-filter="fullstack">🌐 Full Stack</button>
+                <button class="filter-tab" data-filter="java">☕ Core Java</button>
+            </div>
+
             <div class="projects-grid">
-                <div class="project-card" data-aos="fade-up">
+                <!-- 1. Portfolio Website -->
+                <div class="project-card" data-category="fullstack" data-aos="fade-up">
                     <div class="project-image">
                         <img src="portfolio-interface.png" alt="Portfolio Website" class="project-img">
-                        <div class="project-overlay"><a href="https://vedasrivamsi.github.io/portfolio/" class="po-btn"
-                                target="_blank"><i class="fas fa-external-link-alt"></i></a><a
-                                href="https://github.com/vedasrivamsi/portfolio" class="po-btn" target="_blank"><i
-                                    class="fab fa-github"></i></a></div>
+                        <div class="project-overlay">
+                            <a href="https://vedasrivamsi.github.io/portfolio/" class="po-btn" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/vedasrivamsi/portfolio" class="po-btn" target="_blank" title="GitHub Repo"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                     <div class="project-body">
-                        <h3>Portfolio Website</h3>
-                        <p>A modern, responsive portfolio showcasing skills, projects, and journey as a developer with
-                            smooth animations.</p>
-                        <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+                        <div class="project-badge"><i class="fas fa-user-code"></i> Personal Project</div>
+                        <h3>Portfolio Website &amp; VamAI</h3>
+                        <p>A modern, responsive portfolio showcasing skills, projects, and journey as a developer with smooth animations and VamAI assistant.</p>
+                        <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>VamAI Engine</span></div>
                     </div>
                 </div>
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+
+                <!-- 2. AI Interview Simulator -->
+                <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-image">
                         <img src="ai-interview-simulator.png" alt="AI Interview Simulator" class="project-img">
                         <div class="project-overlay">
@@ -569,13 +580,68 @@
                     <div class="project-body">
                         <div class="project-badge"><i class="fas fa-briefcase"></i> Brainovision Internship</div>
                         <h3>AI Interview Simulator</h3>
-                        <p>A smart mock interview platform powered by SLMs and Gemini API. Features live scoring, technical insights, multi-engine evaluation, and per-answer feedback to help candidates prep for real interviews.</p>
+                        <p>A smart mock interview platform powered by SLMs and Gemini API. Features live scoring, technical insights, multi-engine evaluation, and per-answer feedback.</p>
                         <div class="project-tech">
                             <span>Python</span><span>Streamlit</span><span>Gemini API</span>
                             <span>NLP</span><span>SLM</span><span>TF-IDF</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- 3. ESAM — Employee Shift & Attendance Manager -->
+                <div class="project-card" data-category="fullstack" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="esam-project.png" alt="Employee Shift & Attendance Manager" class="project-img">
+                        <div class="project-overlay">
+                            <a href="cert-rinl.pdf" class="po-btn cert-preview-btn" data-cert-url="cert-rinl.pdf" data-cert-title="RINL (Vizag Steel) — Full Stack Internship Certificate" title="View Internship Certificate"><i class="fas fa-certificate"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-badge"><i class="fas fa-briefcase"></i> RINL Vizag Steel Internship</div>
+                        <h3>Employee Shift &amp; Attendance Manager (ESAM)</h3>
+                        <p>A full-stack enterprise web application built using three-tier architecture for employee authentication, attendance tracking, leave management, shift scheduling, and admin dashboards.</p>
+                        <div class="project-tech">
+                            <span>Spring Boot</span><span>Oracle DB</span><span>REST APIs</span>
+                            <span>J2EE</span><span>HTML5</span><span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Restaurant Management System -->
+                <div class="project-card" data-category="fullstack" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <img src="restaurant-project.png" alt="Restaurant Management System" class="project-img">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-badge"><i class="fas fa-user-code"></i> Personal Project</div>
+                        <h3>Restaurant Management System</h3>
+                        <p>A web-based restaurant platform featuring digital menu management, online food ordering, billing, Razorpay payment gateway integration, customer order tracking, and delivery workflow.</p>
+                        <div class="project-tech">
+                            <span>Node.js</span><span>MySQL</span><span>Razorpay</span>
+                            <span>Express</span><span>HTML5</span><span>CSS3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Java Games Suite -->
+                <div class="project-card" data-category="java" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <img src="java-games.png" alt="Java Games Suite" class="project-img">
+                        <div class="project-overlay">
+                            <a href="cert-InternPe.pdf" class="po-btn cert-preview-btn" data-cert-url="cert-InternPe.pdf" data-cert-title="InternPe — Java Programmer Internship Certificate" title="View Internship Certificate"><i class="fas fa-certificate"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-badge"><i class="fas fa-briefcase"></i> InternPe Internship</div>
+                        <h3>Java Games Suite (Tic Tac Toe, Connect 4)</h3>
+                        <p>Classic interactive game suite built applying Core Java, Object-Oriented Programming (OOP), Collections Framework, Exception Handling, and custom game logic verification.</p>
+                        <div class="project-tech">
+                            <span>Java</span><span>Core Java</span><span>OOP</span>
+                            <span>Collections</span><span>Game Logic</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

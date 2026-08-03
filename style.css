@@ -374,10 +374,50 @@ img { max-width: 100%; display: block; }
 .cert-link:hover { background: var(--accent); color: var(--bg-1); border-color: var(--accent); transform: translateY(-2px); }
 
 /* ===== Projects ===== */
+.project-filter-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+.filter-tab {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.filter-tab:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.4);
+    color: var(--text-1);
+    transform: translateY(-2px);
+}
+.filter-tab.active {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(180, 83, 9, 0.25));
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+}
+
 .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .project-card {
     background: var(--bg-glass); border: 1px solid var(--border);
-    border-radius: var(--radius); overflow: hidden; transition: var(--ease); backdrop-filter: blur(10px);
+    border-radius: var(--radius); overflow: hidden; transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.3s ease, box-shadow 0.3s ease; backdrop-filter: blur(10px);
+}
+.project-card.is-hidden {
+    display: none !important;
 }
 .project-card:hover { transform: translateY(-6px); box-shadow: var(--glow); border-color: var(--accent); }
 .project-image { position: relative; overflow: hidden; aspect-ratio: 16/10; }

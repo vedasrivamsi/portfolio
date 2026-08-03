@@ -345,4 +345,27 @@ if (copyEmailBtn) {
     });
 }
 
+// ===== Project Category Filter Tabs Controller =====
+const filterTabs = document.querySelectorAll('.filter-tab');
+const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const filter = tab.dataset.filter;
+
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        projectCards.forEach(card => {
+            const category = card.dataset.category;
+            if (filter === 'all' || category === filter) {
+                card.classList.remove('is-hidden');
+            } else {
+                card.classList.add('is-hidden');
+            }
+        });
+    });
+});
+
+
 
