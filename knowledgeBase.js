@@ -407,11 +407,13 @@ const intents = {
       "technologies",
       "tech stack",
       "programming",
-      "languages",
       "expertise",
       "frameworks",
       "tools",
-      "programming languages"
+      "programming languages",
+      "coding languages",
+      "what can you code",
+      "what do you know"
   ],
 
   projects: [
@@ -463,6 +465,62 @@ const intents = {
       "ranking",
       "proud of",
       "highlight"
+  ],
+
+  greeting: [
+      "hi",
+      "hello",
+      "hey",
+      "good morning",
+      "good afternoon",
+      "good evening",
+      "howdy",
+      "greetings",
+      "sup",
+      "what's up"
+  ],
+
+  spoken_languages: [
+      "languages you speak",
+      "language you speak",
+      "spoken language",
+      "what languages do you speak",
+      "know any language",
+      "human language",
+      "communicate in",
+      "fluent in",
+      "native language",
+      "mother tongue",
+      "telugu",
+      "hindi",
+      "tamil",
+      "english proficiency"
+  ],
+
+  strengths: [
+      "strength",
+      "strengths",
+      "weakness",
+      "soft skills",
+      "personality",
+      "qualities",
+      "traits",
+      "good at",
+      "best quality"
+  ],
+
+  hobbies: [
+      "hobby",
+      "hobbies",
+      "interest",
+      "interests",
+      "fun",
+      "free time",
+      "outside work",
+      "passion",
+      "spare time",
+      "badminton",
+      "beach"
   ]
 
 };
@@ -585,16 +643,16 @@ ${results.map(formatProject).join("<br>")}
       switch (conversationContext.lastIntent) {
   
           case "projects":
-              return "I have developed multiple projects including an AI Portfolio Assistant, Restaurant Management System, Employee Shift & Attendance Manager, Connect 4, Tic Tac Toe, and Rock Paper Scissors. Ask me about any specific project to know more.";
+              return "I have built multiple projects including an AI Interview Simulator, Restaurant Management System, Employee Shift & Attendance Manager (ESAM), and Java Games Suite. Ask me about any specific project to know more!";
   
           case "skills":
-              return "My strongest skills include Java, Python, JavaScript, Full Stack Development, Artificial Intelligence, Machine Learning, SQL, Git, and Software Engineering.";
+              return "My strongest skills include Python, JavaScript, Full Stack Development, Artificial Intelligence, Machine Learning, SQL, Git, and Software Engineering.";
   
           case "internship":
-              return "I have completed internships at Brainovision Solutions, Rashtriya Ispat Nigam Limited (RINL), and InternPe, gaining experience in AI, Full Stack Development, and Java Programming.";
+              return "I have completed 3 internships — at Brainovision Solutions (Generative AI & Automation), RINL Vizag Steel (Full Stack Development), and InternPe (Java Programming).";
   
           default:
-              return "Could you tell me what you'd like to know more about?";
+              return "Could you tell me what you'd like to know more about? I can help with skills, projects, internships, certifications, education, or contact info!";
       }
   
   }
@@ -629,6 +687,35 @@ ${results.map(formatProject).join("<br>")}
         <a href="https://ai-interview-simulator-vedasrivamsi.streamlit.app/" target="_blank" class="cc-link">🚀 Live Demo ➔</a> &nbsp;
         <a href="https://github.com/vedasrivamsi/AI-Interview-Simulator" target="_blank" class="cc-link">💻 GitHub ➔</a>
     </p>
+</div>
+`;
+    }
+
+    // ESAM / Employee Shift & Attendance Manager
+    const esamKw = ["esam", "employee shift", "attendance manager", "attendance system", "shift management", "spring boot project", "employee management"];
+    if (esamKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "esam";
+        return `
+<div class="response-card">
+    <h3>🏢 Employee Shift &amp; Attendance Manager (ESAM)</h3>
+    <p><strong>Built During:</strong> RINL Vizag Steel Internship (June 2025 &bull; 1 Month &bull; Offline, Visakhapatnam)</p>
+    <p><strong>🛠 Tech Stack:</strong> Spring Boot &bull; Oracle Database &bull; HTML5 &bull; CSS3 &bull; JavaScript &bull; REST APIs</p>
+    <p>A full-stack enterprise web application built using <strong>three-tier architecture</strong>. Features employee authentication, attendance tracking, leave management, shift scheduling, and admin dashboards.</p>
+    <p><a href="cert-rinl.pdf" target="_blank" class="cc-link">📄 View RINL Certificate ➔</a></p>
+</div>
+`;
+    }
+
+    // Restaurant Management System
+    const restaurantKw = ["restaurant", "restaurant management", "food ordering", "razorpay", "billing system", "menu management"];
+    if (restaurantKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "restaurant";
+        return `
+<div class="response-card">
+    <h3>🍽️ Restaurant Management System</h3>
+    <p><strong>Type:</strong> Personal Project</p>
+    <p><strong>🛠 Tech Stack:</strong> HTML5 &bull; CSS3 &bull; JavaScript &bull; Node.js &bull; MySQL &bull; Razorpay</p>
+    <p>A full-featured web-based restaurant platform with digital menu management, online food ordering, billing, <strong>Razorpay payment integration</strong>, customer order tracking, and delivery management.</p>
 </div>
 `;
     }
@@ -707,7 +794,13 @@ ${results.map(formatProject).join("<br>")}
 
       conversationContext.lastIntent = "introduction";
         return `
-<strong>${knowledgeBase.personal.fullName}</strong>, also known as <strong>${knowledgeBase.personal.nickname}</strong>, is a <strong>${knowledgeBase.personal.year}</strong> <strong>${knowledgeBase.personal.degree}</strong> student at <strong>${knowledgeBase.personal.college}</strong>.
+<div class="response-card">
+    <h3>👤 About Vamsi</h3>
+    <p><strong>Sugunesh Veda Sri Vamsi</strong> (also known as <strong>Vamsi</strong>) is a final-year <strong>B.Tech Computer Science & Engineering</strong> student at <strong>Andhra University College of Engineering (AUCE), Visakhapatnam</strong> — graduating in 2027 with a CGPA of <strong>7.43</strong>.</p>
+    <p>He is a passionate <strong>Full Stack Developer</strong> and <strong>AI Enthusiast</strong> with hands-on experience in building real-world applications. He has completed <strong>3 internships</strong> (Brainovision, RINL, InternPe) and holds <strong>9+ certifications</strong>.</p>
+    <p>His flagship project is the <strong>AI Interview Simulator</strong> — a live, deployed Streamlit app powered by NLP and Gemini API. He also built this very portfolio with <strong>VamAI</strong>, a custom AI chatbot.</p>
+    <p>Beyond tech, Vamsi is an avid <strong>badminton player</strong> and loves chilling at the beach. He speaks <strong>English, Telugu, Hindi, and Tamil</strong>.</p>
+</div>
 `;
     }
 
@@ -800,7 +893,7 @@ ${knowledgeBase.certifications
     return `
 <div class="response-card">
 
-<h3>🏆 Key Achievements & Highlights</h3>
+<h3>🏆 Key Achievements &amp; Highlights</h3>
 
 <p><strong>🎓 Academic:</strong><br>
 Maintaining a CGPA of <strong>7.43</strong> in B.Tech Computer Science Engineering at Andhra University College of Engineering, Visakhapatnam.</p>
@@ -809,10 +902,10 @@ Maintaining a CGPA of <strong>7.43</strong> in B.Tech Computer Science Engineeri
 Completed <strong>3 internships</strong> — at Brainovision Solutions (AI & Automation), RINL (Full Stack Development), and InternPe (Java Programming).</p>
 
 <p><strong>📜 Certifications:</strong><br>
-Earned <strong>9 certifications</strong> from recognized organizations including NxtWave, AWS Forage, GUVI-HCL, Student Tribe, and internship completion certificates.</p>
+Earned <strong>9+ certifications</strong> from recognized organizations including NxtWave, AWS Forage, GUVI-HCL, Student Tribe, CISCO, and internship completion certificates.</p>
 
 <p><strong>🤖 Projects:</strong><br>
-Built a fully functional <strong>AI chatbot (VamAI)</strong> integrated into a portfolio website using pure HTML, CSS, and JavaScript — no backend, no APIs.</p>
+Built a live <strong>AI Interview Simulator</strong> deployed on Streamlit (Gemini API + NLP), and a full portfolio website with a custom AI chatbot — <strong>VamAI</strong>.</p>
 
 <p><strong>🌐 Live Portfolio:</strong><br>
 Deployed a professional portfolio on <a href="https://vedasrivamsi.github.io/portfolio/" target="_blank">GitHub Pages</a> with a custom AI assistant.</p>
@@ -820,7 +913,64 @@ Deployed a professional portfolio on <a href="https://vedasrivamsi.github.io/por
 </div>
 `;
 
-}
+  }
+
+  // Greeting
+  if (hasIntent(input, "greeting")) {
+    conversationContext.lastIntent = "greeting";
+    return `
+<div class="response-card">
+    <h3>👋 Hey there!</h3>
+    <p>I'm <strong>VamAI</strong>, Vamsi's personal AI assistant. I'm here to help you learn all about <strong>Sugunesh Veda Sri Vamsi</strong>!</p>
+    <p>You can ask me about his <strong>skills</strong>, <strong>projects</strong>, <strong>internships</strong>, <strong>certifications</strong>, <strong>education</strong>, or how to <strong>contact</strong> him. What would you like to know? 😊</p>
+</div>
+`;
+  }
+
+  // Spoken Languages
+  if (hasIntent(input, "spoken_languages")) {
+    conversationContext.lastIntent = "spoken_languages";
+    return `
+<div class="response-card">
+    <h3>🌐 Languages Vamsi Speaks</h3>
+    <p>• <strong>English</strong> — Full Professional Proficiency</p>
+    <p>• <strong>Telugu</strong> — Native Language</p>
+    <p>• <strong>Hindi</strong> — Conversational</p>
+    <p>• <strong>Tamil</strong> — Basic</p>
+</div>
+`;
+  }
+
+  // Strengths & Soft Skills
+  if (hasIntent(input, "strengths")) {
+    conversationContext.lastIntent = "strengths";
+    return `
+<div class="response-card">
+    <h3>💪 Strengths &amp; Soft Skills</h3>
+    <p>• <strong>Quick Learner</strong> — Adapts rapidly to new technologies</p>
+    <p>• <strong>Problem Solver</strong> — Analytical approach to challenges</p>
+    <p>• <strong>Team Player</strong> — Collaborative and communicative</p>
+    <p>• <strong>Self-Motivated</strong> — Consistently driven to grow</p>
+    <p>• <strong>Adaptability</strong> — Comfortable in diverse environments</p>
+    <p>• <strong>Continuous Learner</strong> — Always upskilling with emerging tech</p>
+</div>
+`;
+  }
+
+  // Hobbies & Interests
+  if (hasIntent(input, "hobbies")) {
+    conversationContext.lastIntent = "hobbies";
+    return `
+<div class="response-card">
+    <h3>🎯 Hobbies &amp; Interests</h3>
+    <p>• 🏸 <strong>Badminton</strong> — Passionate player who loves the thrill of the game</p>
+    <p>• 🏖️ <strong>Beach trips</strong> — Loves chilling at the beach on weekends</p>
+    <p>• 🤖 <strong>AI & Tech</strong> — Exploring the latest in AI, LLMs, and tools</p>
+    <p>• 💻 <strong>Building projects</strong> — Turning ideas into working software</p>
+    <p>• 📖 <strong>Reading technical blogs</strong> — Staying current with tech trends</p>
+</div>
+`;
+  }
 
   return formatHelp();
 }
