@@ -139,6 +139,16 @@ const knowledgeBase = {
         ],
         description:
           "Created a Java-based Rock Paper Scissors game featuring interactive gameplay, random computer moves, score tracking, and efficient game logic."
+      },
+
+      {
+        title: "Number Guessing Game",
+        company: "InternPe",
+        tech: [
+          "Java"
+        ],
+        description:
+          "Developed a Java-based Number Guessing Game with random number generation, attempt limits, feedback hints (higher/lower), and score calculation."
       }
     ],
   
