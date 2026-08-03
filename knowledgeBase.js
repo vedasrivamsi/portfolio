@@ -659,20 +659,64 @@ ${results.map(formatProject).join("<br>")}
 
     /* ── 1. SPECIFIC MICRO-INTENTS (Precision Answers) ── */
 
-    // CGPA / Marks / Grades
-    const cgpaKw = ["cgpa", "gpa", "marks", "percentage", "score", "grades", "percentage in btech", "btech cgpa"];
-    if (cgpaKw.some(kw => input.includes(kw))) {
-        conversationContext.lastIntent = "cgpa";
-        return `
-<div class="response-card">
-    <h3>📊 Academic CGPA & Marks Summary</h3>
-    <p>🎓 <strong>B.Tech (CSE) &mdash; AUCE:</strong> CGPA <strong>7.43</strong> (Ongoing, 2023 &ndash; Present)</p>
-    <p>🏫 <strong>Intermediate (MPC) &mdash; Sri Viswa:</strong> <strong>78.7%</strong> (2021 &ndash; 2023)</p>
-    <p>📖 <strong>Class 10 (CBSE) &mdash; Sri Krishna Vidya Mandir:</strong> <strong>72.8%</strong> (2021)</p>
-</div>
-`;
-    }
-
+    // ACADEMIC SCORES -- Context-Aware Sub-Intents (most-specific first)
+
+    // 1. B.Tech / CGPA / College specific
+    const btechKw = ["btech", "b.tech", "cgpa", "gpa", "college cgpa", "university", "engineering cgpa", "auce", "andhra university", "current cgpa", "degree cgpa"];
+    if (btechKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "btech_cgpa";
+        return `
+<div class="response-card">
+    <h3>&#127891; B.Tech CGPA</h3>
+    <p><strong>Degree:</strong> B.Tech in Computer Science &amp; Engineering</p>
+    <p><strong>College:</strong> Andhra University College of Engineering (AUCE), Visakhapatnam</p>
+    <p><strong>CGPA:</strong> <strong>7.43</strong> &mdash; Ongoing (2023 &ndash; Present, Graduating 2027)</p>
+</div>
+`;
+    }
+
+    // 2. Intermediate / 12th / Junior College specific
+    const interKw = ["intermediate", "inter marks", "12th", "plus two", "+2", "junior college", "sri viswa", "mpc", "11th", "intermediate percentage"];
+    if (interKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "inter_score";
+        return `
+<div class="response-card">
+    <h3>&#127979; Intermediate Score</h3>
+    <p><strong>College:</strong> Sri Viswa Junior College</p>
+    <p><strong>Stream:</strong> MPC (Maths, Physics &amp; Chemistry)</p>
+    <p><strong>Score:</strong> <strong>78.7%</strong> &mdash; (2021 &ndash; 2023)</p>
+</div>
+`;
+    }
+
+    // 3. Class 10 / SSC / School specific
+    const class10Kw = ["10th", "class 10", "ssc", "school marks", "secondary school", "cbse", "sri krishna", "matric", "10th percentage", "school percentage", "class10"];
+    if (class10Kw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "class10_score";
+        return `
+<div class="response-card">
+    <h3>&#128218; Class 10 Score</h3>
+    <p><strong>School:</strong> Sri Krishna Vidya Mandir</p>
+    <p><strong>Board:</strong> CBSE</p>
+    <p><strong>Score:</strong> <strong>72.8%</strong> &mdash; Passed 2021</p>
+</div>
+`;
+    }
+
+    // 4. General / All academic scores (vague queries)
+    const allScoresKw = ["marks", "percentage", "score", "grades", "academic record", "academic performance", "all marks", "all scores"];
+    if (allScoresKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "all_scores";
+        return `
+<div class="response-card">
+    <h3>&#128202; Full Academic Summary</h3>
+    <p>&#127891; <strong>B.Tech (CSE) &mdash; AUCE:</strong> CGPA <strong>7.43</strong> (Ongoing, 2023 &ndash; Present)</p>
+    <p>&#127979; <strong>Intermediate (MPC) &mdash; Sri Viswa:</strong> <strong>78.7%</strong> (2021 &ndash; 2023)</p>
+    <p>&#128218; <strong>Class 10 (CBSE) &mdash; Sri Krishna Vidya Mandir:</strong> <strong>72.8%</strong> (2021)</p>
+</div>
+`;
+    }
+
     // AI Interview Simulator (Brainovision Project)
     const aiSimKw = ["ai interview", "interview simulator", "mock interview", "streamlit", "ai simulator", "interview simulator", "interview app"];
     if (aiSimKw.some(kw => input.includes(kw))) {
