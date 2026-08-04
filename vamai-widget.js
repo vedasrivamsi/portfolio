@@ -19,6 +19,7 @@
   const bubble      = document.getElementById('vamAiBubble');
   const widget      = document.getElementById('vamAiWidget');
   const closeBtn    = document.getElementById('vamAiClose');
+  const clearBtn    = document.getElementById('vamAiClear');
   const chatArea    = document.getElementById('vamAiChatArea');
   const inputField  = document.getElementById('vamAiInput');
   const sendBtn     = document.getElementById('vamAiSendBtn');
@@ -68,8 +69,29 @@
     bubble.focus();
   }
 
+  function clearChat() {
+    chatHistory = [];
+    sessionStorage.removeItem('vamAiChatHistory');
+    chatArea.innerHTML = `
+      <div class="vamai-msg vamai-msg--bot">
+        <div class="vamai-msg__avatar">🤖</div>
+        <div class="vamai-msg__bubble">
+          👋 Hi! I'm <strong>VamAI</strong>, Vamsi's personal AI assistant.<br><br>
+          Ask me about his <strong>skills</strong>, <strong>projects</strong>,
+          <strong>internships</strong>, <strong>certifications</strong>, or how to
+          <strong>contact</strong> him!
+        </div>
+      </div>
+    `;
+    suggestionsShown = true;
+    if (suggestions) suggestions.classList.remove('vamai-suggestions--hidden');
+    inputField.value = '';
+    sendBtn.disabled = true;
+  }
+
   bubble.addEventListener('click', () => isOpen ? closeWidget() : openWidget());
   closeBtn.addEventListener('click', closeWidget);
+  if (clearBtn) clearBtn.addEventListener('click', clearChat);
 
   // Escape key closes the widget
   document.addEventListener('keydown', (e) => {

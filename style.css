@@ -752,17 +752,22 @@ img { max-width: 100%; display: block; }
     0%, 100% { opacity: 1; }
     50%       { opacity: 0.3; }
 }
+.vamai-clear,
 .vamai-close {
     background: none;
     border: none;
     color: var(--text-2);
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 1;
-    padding: 4px;
+    padding: 6px;
     border-radius: 6px;
     transition: color 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.vamai-clear:hover,
 .vamai-close:hover { color: var(--text-1); background: rgba(255,255,255,0.06); }
 
 /* ── Chat Area ───────────────────────────────────────────── */
