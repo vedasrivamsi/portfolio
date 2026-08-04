@@ -42,25 +42,34 @@ const knowledgeBase = {
       "CSS3",
       "Bootstrap",
       "SQL",
-      "Oracle Database",
       "MySQL",
+      "SQLite",
       "Git",
       "GitHub",
-      "SQLite",
-      "Tableau",
-      "PowerBI",
-      "Excel",
+      "VS Code",
+      "MS Office",
+      "Power BI",
       "Machine Learning",
       "Artificial Intelligence",
-      "Object-Oriented Programming",
-      "DBMS",
-      "Operating Systems",
-      "Computer Networks",
-      "Software Engineering",
-      "Responsive Web Design"
+      "DBMS"
     ],
   
     projects: [
+      {
+        title: "VamAI-Integrated Personal Portfolio",
+        company: "Personal Project",
+        tech: [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "VamAI Engine"
+        ],
+        description:
+          "A modern, responsive personal portfolio website featuring a luxury dark and gold theme, smooth scroll animations, VamAI chatbot assistant, certificate previews, project category filtering, resume download, and full mobile support. Built entirely with vanilla HTML, CSS, and JavaScript.",
+        liveUrl: "https://vedasrivamsi.github.io/portfolio/",
+        githubUrl: "https://github.com/vedasrivamsi/portfolio"
+      },
+
       {
         title: "AI Interview Simulator",
         company: "Brainovision Solutions India Pvt. Ltd.",
