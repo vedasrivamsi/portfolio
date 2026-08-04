@@ -281,10 +281,17 @@ function openCertModal(url, title) {
     }
 
     const isImage = url.toLowerCase().endsWith('.png') || url.toLowerCase().endsWith('.jpg') || url.toLowerCase().endsWith('.jpeg');
-    
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
     if (isImage) {
+        // Images work fine in modal on all devices
         certModalBody.innerHTML = `<img src="${url}" alt="${title}" class="cert-img-preview">`;
+    } else if (isMobile) {
+        // PDFs can't be embedded on mobile — open in new tab instead
+        window.open(url, '_blank');
+        return;
     } else {
+        // Desktop — embed PDF in iframe modal
         certModalBody.innerHTML = `<iframe src="${url}#toolbar=0" title="${title}" class="cert-iframe"></iframe>`;
     }
 
