@@ -235,7 +235,7 @@ Profile Context:
   2. Java Developer Intern at InternPe (1 Month, Jul 2025, Remote): Core Java, Tic Tac Toe, Rock Paper Scissors.
   3. Full Stack Web Development Intern at RINL Vizag Steel (1 Month, Jun 2025, Offline): Built Employee Shift & Attendance Manager (ESAM) with Spring Boot, Oracle DB, REST APIs.
 - Certifications: CISCO Data Analytics Essentials, AWS Solutions Architecture (Forage), HCL GUVI HTML & CSS, NxtWave CCBP.
-- Skills: C, Python, JavaScript, HTML5, CSS3, Bootstrap, MySQL, SQLite, Oracle DB, Git, GitHub, VS Code, Tableau, PowerBI, Excel.
+- Skills: C, Python, JavaScript, HTML5, CSS3, Bootstrap, SQL, MySQL, SQLite, Git, GitHub, VS Code, MS Office, Power BI, Machine Learning, Artificial Intelligence, DBMS.
 - Languages: English (Full Professional), Telugu (Native), Hindi (Conversational), Tamil (Basic).
 - Contact: Email vedasrivamsi127@gmail.com, LinkedIn: sugunesh-vedasrivamsi, GitHub: vedasrivamsi.
 
