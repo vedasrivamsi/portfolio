@@ -228,7 +228,12 @@ function closeResumeModal() {
 if (viewResumeBtn) {
     viewResumeBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        openResumeModal();
+        const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            window.open('resume.pdf', '_blank');
+        } else {
+            openResumeModal();
+        }
     });
 }
 
