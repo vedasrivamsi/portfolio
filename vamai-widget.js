@@ -206,7 +206,7 @@
       return `<div class="response-card">
   <h3>📄 Resume</h3>
   <p>Click the button below to download Vamsi's latest resume.</p>
-  <a href="resume.pdf"
+  <a href="resume.pdf?v=5.0"
      download="Sugunesh_Veda_Sri_Vamsi_Resume.pdf"
      class="vamai-resume-btn"
      target="_blank"

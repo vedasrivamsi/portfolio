@@ -230,7 +230,7 @@ if (viewResumeBtn) {
         e.preventDefault();
         const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         if (isMobile) {
-            window.open('resume.pdf', '_blank');
+            window.open('resume.pdf?v=5.0', '_blank');
         } else {
             openResumeModal();
         }
