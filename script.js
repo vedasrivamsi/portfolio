@@ -379,5 +379,121 @@ filterTabs.forEach(tab => {
     });
 });
 
+// ===== Radial Gold Cursor Spotlight Controller =====
+(function initCursorSpotlight() {
+    const spotlight = document.getElementById('cursorSpotlight');
+    if (!spotlight || window.matchMedia('(pointer: coarse)').matches) return;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    }, { passive: true });
+
+    function animateSpotlight() {
+        currentX += (mouseX - currentX) * 0.15;
+        currentY += (mouseY - currentY) * 0.15;
+        spotlight.style.left = `${currentX}px`;
+        spotlight.style.top = `${currentY}px`;
+        requestAnimationFrame(animateSpotlight);
+    }
+    animateSpotlight();
+})();
+
+// ===== Hero Interactive Tech Node Particle Canvas =====
+(function initHeroParticles() {
+    const canvas = document.getElementById('heroParticles');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width = (canvas.width = canvas.parentElement.offsetWidth);
+    let height = (canvas.height = canvas.parentElement.offsetHeight);
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+    });
+
+    const particles = [];
+    const particleCount = Math.min(Math.floor(width / 25), 45);
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.6;
+            this.vy = (Math.random() - 0.5) * 0.6;
+            this.radius = Math.random() * 2 + 1;
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.7)';
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+
+    function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 110) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(212, 175, 55, ${0.25 * (1 - dist / 110)})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(render);
+    }
+    render();
+})();
+
+// ===== Animated Skill Progress Bars =====
+(function initSkillBars() {
+    const skillFills = document.querySelectorAll('.skill-fill');
+    if (!skillFills.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const fill = entry.target;
+                const targetWidth = fill.dataset.progress || '80%';
+                fill.style.width = targetWidth;
+                observer.unobserve(fill);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    skillFills.forEach(fill => observer.observe(fill));
+})();
+
 
 
