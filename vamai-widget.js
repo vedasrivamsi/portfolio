@@ -16,16 +16,38 @@
   'use strict';
 
   /* ── Element References ─────────────────────────────────── */
-  const bubble      = document.getElementById('vamAiBubble');
-  const widget      = document.getElementById('vamAiWidget');
-  const closeBtn    = document.getElementById('vamAiClose');
-  const clearBtn    = document.getElementById('vamAiClear');
-  const chatArea    = document.getElementById('vamAiChatArea');
-  const inputField  = document.getElementById('vamAiInput');
-  const sendBtn     = document.getElementById('vamAiSendBtn');
-  const inputForm   = document.getElementById('vamAiForm');
-  const suggestions = document.getElementById('vamAiSuggestions');
-  const tooltip     = document.getElementById('vamAiTooltip');
+  const bubble         = document.getElementById('vamAiBubble');
+  const widget         = document.getElementById('vamAiWidget');
+  const closeBtn       = document.getElementById('vamAiClose');
+  const clearBtn       = document.getElementById('vamAiClear');
+  const copySummaryBtn = document.getElementById('vamAiCopySummary');
+  const chatArea       = document.getElementById('vamAiChatArea');
+  const inputField     = document.getElementById('vamAiInput');
+  const sendBtn        = document.getElementById('vamAiSendBtn');
+  const inputForm      = document.getElementById('vamAiForm');
+  const suggestions    = document.getElementById('vamAiSuggestions');
+  const tooltip        = document.getElementById('vamAiTooltip');
+
+  /* Candidate Summary Text for Recruiters */
+  const candidateSummaryText = `Sugunesh Veda Sri Vamsi — Full Stack Developer & AI Enthusiast
+🎓 B.Tech CSE Student at Andhra University (CGPA: 7.43)
+💼 Experience: AI for Generation & Automation Intern @ Brainovision | Web Dev Intern @ InternPe
+💻 Tech Skills: HTML5, CSS3, JavaScript, Node.js, Python, MySQL, SQLite, GenAI & LLMs, Git/GitHub
+🏆 Certifications: Cisco, AWS, Brainovision, Guvi, NxtWave, RINL
+🌐 Portfolio: https://vedasrivamsi.github.io/portfolio/
+📧 Contact: vedasrivamsi127@gmail.com | https://www.linkedin.com/in/sugunesh-vedasrivamsi/`;
+
+  window.copyCandidateSummary = function() {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(candidateSummaryText).then(() => {
+        if (typeof showToast === 'function') showToast('📋 Candidate Summary copied to clipboard!');
+      }).catch(() => {
+        if (typeof showToast === 'function') showToast('📋 vedasrivamsi127@gmail.com');
+      });
+    } else {
+      if (typeof showToast === 'function') showToast('📋 vedasrivamsi127@gmail.com');
+    }
+  };
 
   /* ── State ──────────────────────────────────────────────── */
   let isOpen            = false;
@@ -92,6 +114,7 @@
   bubble.addEventListener('click', () => isOpen ? closeWidget() : openWidget());
   closeBtn.addEventListener('click', closeWidget);
   if (clearBtn) clearBtn.addEventListener('click', clearChat);
+  if (copySummaryBtn) copySummaryBtn.addEventListener('click', window.copyCandidateSummary);
 
   // Escape key closes the widget
   document.addEventListener('keydown', (e) => {
@@ -198,6 +221,25 @@
   ──────────────────────────────────────────────────────────── */
   function getExtendedResponse(text) {
     const input = text.toLowerCase().trim();
+
+    /* Candidate Profile Summary */
+    const summaryKw = ['summary', 'copy summary', 'candidate summary', 'profile summary', 'recruiter summary', 'summary for recruiter'];
+    if (summaryKw.some(k => input.includes(k))) {
+      return `<div class="response-card">
+  <h3>📋 Candidate Profile Summary</h3>
+  <p>Here is a quick summary formatted for recruiters & hiring managers:</p>
+  <div class="vamai-summary-box">
+    <strong>Sugunesh Veda Sri Vamsi</strong> — Full Stack & AI Developer<br>
+    🎓 B.Tech CSE @ Andhra University (CGPA 7.43)<br>
+    💼 Experience: AI Intern @ Brainovision | Web Dev @ InternPe<br>
+    💻 Skills: HTML/CSS, JS, Node.js, Python, MySQL, GenAI & LLMs<br>
+    📧 Email: vedasrivamsi127@gmail.com
+  </div>
+  <button class="vamai-resume-btn" onclick="copyCandidateSummary()" style="border:none; cursor:pointer; margin-top:8px;">
+    📋 Copy Summary to Clipboard
+  </button>
+</div>`;
+    }
 
     /* Resume */
     const resumeKw = ['resume', 'cv', 'curriculum vitae', 'download resume',

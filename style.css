@@ -759,6 +759,7 @@ img { max-width: 100%; display: block; }
     0%, 100% { opacity: 1; }
     50%       { opacity: 0.3; }
 }
+.vamai-copy-summary,
 .vamai-clear,
 .vamai-close {
     background: none;
@@ -774,8 +775,20 @@ img { max-width: 100%; display: block; }
     align-items: center;
     justify-content: center;
 }
+.vamai-copy-summary:hover,
 .vamai-clear:hover,
 .vamai-close:hover { color: var(--text-1); background: rgba(255,255,255,0.06); }
+
+.vamai-summary-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 8px 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-1);
+}
 
 /* ── Chat Area ───────────────────────────────────────────── */
 .vamai-chat-area {
