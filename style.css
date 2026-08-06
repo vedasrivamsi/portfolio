@@ -653,7 +653,10 @@ img { max-width: 100%; display: block; }
 }
 .vamai-bubble--active {
     animation: none;
-    transform: scale(0.92);
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: scale(0.5) !important;
+    visibility: hidden;
 }
 .vamai-bubble__icon { line-height: 1; }
 .vamai-bubble__label {
@@ -685,7 +688,7 @@ img { max-width: 100%; display: block; }
 /* ── Chat Widget Panel ───────────────────────────────────── */
 .vamai-widget {
     position: fixed;
-    bottom: 108px;
+    bottom: 32px;
     right: 32px;
     width: 430px;
     height: 560px;
@@ -695,7 +698,7 @@ img { max-width: 100%; display: block; }
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 9998;
+    z-index: 10000;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212,175,55,0.1);
     opacity: 0;
     transform: translateY(20px) scale(0.96);
