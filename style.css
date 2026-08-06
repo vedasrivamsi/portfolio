@@ -242,10 +242,14 @@ img { max-width: 100%; display: block; }
 .about-img-placeholder img { width: 100%; height: 100%; object-fit: cover; }
 .about-heading { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; margin-bottom: 18px; }
 .about-text p { color: var(--text-2); margin-bottom: 14px; font-size: 0.95rem; line-height: 1.8; }
-.about-stats { display: flex; gap: 16px; margin: 28px 0; }
+.about-stats { display: flex; gap: 12px; margin: 28px 0; flex-wrap: wrap; }
 .stat {
-    flex: 1; text-align: center; padding: 18px; border-radius: var(--radius-sm);
+    flex: 1 1 calc(20% - 12px); min-width: 95px; text-align: center; padding: 14px 10px; border-radius: var(--radius-sm);
     background: var(--bg-glass); border: 1px solid var(--border); backdrop-filter: blur(10px);
+    transition: var(--ease);
+}
+.stat:hover {
+    border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--glow);
 }
 .stat-num { display: block; font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .stat-lbl { font-size: 0.7rem; letter-spacing: 2px; color: var(--text-3); }
