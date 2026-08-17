@@ -110,7 +110,9 @@ const mobileOverlay = document.getElementById('mobileNavOverlay');
 navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     mobileOverlay.classList.toggle('active');
-    document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+    const isOpen = mobileOverlay.classList.contains('active');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 });
 
 document.querySelectorAll('.mobile-nav-link').forEach(link => {
@@ -176,18 +178,7 @@ const statObserver = new IntersectionObserver((entries) => {
 
 statNumbers.forEach(el => statObserver.observe(el));
 
-// ===== Skill Bar Fill Animation =====
-const skillFills = document.querySelectorAll('.skill-fill');
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.width = entry.target.dataset.width + '%';
-            skillObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.3 });
 
-skillFills.forEach(el => skillObserver.observe(el));
 
 // ===== Smooth Scroll for all anchor links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -476,24 +467,7 @@ filterTabs.forEach(tab => {
     render();
 })();
 
-// ===== Animated Skill Progress Bars =====
-(function initSkillBars() {
-    const skillFills = document.querySelectorAll('.skill-fill');
-    if (!skillFills.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const fill = entry.target;
-                const targetWidth = fill.dataset.progress || '80%';
-                fill.style.width = targetWidth;
-                observer.unobserve(fill);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    skillFills.forEach(fill => observer.observe(fill));
-})();
 
 
 

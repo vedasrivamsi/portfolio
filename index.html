@@ -30,7 +30,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=10.0">
+    <link rel="stylesheet" href="style.css?v=11.0">
     <!-- Schema.org JSON-LD Structured Data for Google Search SEO -->
     <script type="application/ld+json">
     {
@@ -102,10 +102,12 @@
                 <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
                 <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
                 <li><a href="#certifications" class="nav-link" data-section="certifications">Certs</a></li>
+                <li><a href="#achievements" class="nav-link" data-section="achievements">Achievements</a></li>
                 <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#learning" class="nav-link" data-section="learning">Learning</a></li>
                 <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -119,7 +121,9 @@
         <a href="#skills" class="mobile-nav-link">Skills</a>
         <a href="#experience" class="mobile-nav-link">Experience</a>
         <a href="#certifications" class="mobile-nav-link">Certifications</a>
+        <a href="#achievements" class="mobile-nav-link">Achievements</a>
         <a href="#projects" class="mobile-nav-link">Projects</a>
+        <a href="#learning" class="mobile-nav-link">Currently Learning</a>
         <a href="#contact" class="mobile-nav-link">Contact</a>
     </div>
 
@@ -197,11 +201,16 @@
                         find me chilling around the beach on weekends. I believe balancing work and play keeps the
                         creativity flowing.</p>
                     <div class="about-stats">
-                        <a href="#experience" class="stat" title="Click to view Experience"><span class="stat-num" data-count="3">0</span><span class="stat-lbl">EXPERIENCE</span></a>
-                        <a href="#projects" class="stat" title="Click to view Projects"><span class="stat-num" data-count="5">0</span><span class="stat-lbl">PROJECTS</span></a>
-                        <a href="#skills" class="stat" title="Click to view Skills"><span class="stat-num" data-count="15">0</span><span class="stat-lbl">SKILLS</span></a>
-                        <a href="#certifications" class="stat" title="Click to view Certifications"><span class="stat-num" data-count="9">0</span><span class="stat-lbl">CERTS</span></a>
-                        <a href="#education" class="stat" title="Click to view Education"><span class="stat-num" data-count="7.43">0</span><span class="stat-lbl">CGPA</span></a>
+                        <a href="#experience" class="stat" title="Click to view Experience"><span class="stat-num"
+                                data-count="3">0</span><span class="stat-lbl">EXPERIENCE</span></a>
+                        <a href="#projects" class="stat" title="Click to view Projects"><span class="stat-num"
+                                data-count="5">0</span><span class="stat-lbl">PROJECTS</span></a>
+                        <a href="#skills" class="stat" title="Click to view Skills"><span class="stat-num"
+                                data-count="20">0</span><span class="stat-lbl">SKILLS</span></a>
+                        <a href="#certifications" class="stat" title="Click to view Certifications"><span
+                                class="stat-num" data-count="9">0</span><span class="stat-lbl">CERTS</span></a>
+                        <a href="#education" class="stat" title="Click to view Education"><span class="stat-num"
+                                data-count="7.43">0</span><span class="stat-lbl">CGPA</span></a>
                     </div>
                     <div class="about-languages">
                         <span class="lang-title"><i class="fas fa-language"></i> Languages:</span>
@@ -213,7 +222,8 @@
                     <div class="about-buttons">
                         <a href="resume.pdf?v=5.0" download="Sugunesh_Veda_Sri_Vamsi_Resume.pdf" class="btn btn-primary"
                             id="resumeBtn"><span>Download Resume</span><i class="fas fa-download"></i></a>
-                        <button class="btn btn-glass" id="viewResumeBtn"><span>View Resume</span><i class="fas fa-eye"></i></button>
+                        <button class="btn btn-glass" id="viewResumeBtn"><span>View Resume</span><i
+                                class="fas fa-eye"></i></button>
                     </div>
                 </div>
             </div>
@@ -290,106 +300,77 @@
             <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
             <p class="section-subtitle">Technologies and tools I work with</p>
             <div class="skills-grid">
+
+                <!-- Frontend -->
                 <div class="skill-card" data-aos="fade-up">
                     <div class="skill-header">
                         <div class="skill-icon si-frontend"><i class="fas fa-palette"></i></div>
                         <h3>Frontend</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fab fa-html5"></i> HTML5 <span class="skill-pct">92%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="92%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fab fa-css3-alt"></i> CSS3 <span class="skill-pct">88%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="88%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fab fa-js-square"></i> JavaScript <span class="skill-pct">90%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fab fa-bootstrap"></i> Bootstrap <span class="skill-pct">82%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="82%"></div></div>
-                        </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="skill-tag"><i class="fab fa-js-square"></i> JavaScript</span>
+                        <span class="skill-tag"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                        <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
                     </div>
                 </div>
+
+                <!-- Backend & AI -->
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="skill-header">
                         <div class="skill-icon si-backend"><i class="fas fa-server"></i></div>
                         <h3>Backend &amp; AI</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fab fa-node-js"></i> Node.js <span class="skill-pct">80%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="80%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fas fa-brain"></i> GenAI &amp; LLMs <span class="skill-pct">85%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="85%"></div></div>
-                        </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-node-js"></i> Node.js</span>
+                        <span class="skill-tag"><i class="fas fa-brain"></i> GenAI &amp; LLMs</span>
+                        <span class="skill-tag"><i class="fas fa-robot"></i> Prompt Engineering</span>
+                        <span class="skill-tag"><i class="fas fa-project-diagram"></i> RAG</span>
                     </div>
                 </div>
+
+                <!-- Database -->
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="skill-header">
                         <div class="skill-icon si-db"><i class="fas fa-database"></i></div>
                         <h3>Database</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fas fa-database"></i> MySQL <span class="skill-pct">85%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="85%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><div class="skill-pill-icon"><i class="fas fa-database"></i></div> SQLite <span class="skill-pct">78%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="78%"></div></div>
-                        </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-database"></i> MySQL</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i> SQLite</span>
                     </div>
                 </div>
+
+                <!-- Programming Languages -->
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="skill-header">
                         <div class="skill-icon si-lang"><i class="fas fa-code"></i></div>
                         <h3>Languages</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fab fa-python"></i> Python <span class="skill-pct">88%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="88%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fab fa-js-square"></i> JavaScript <span class="skill-pct">90%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fas fa-copyright"></i> C Language <span class="skill-pct">80%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="80%"></div></div>
-                        </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="skill-tag"><i class="fab fa-js-square"></i> JavaScript</span>
+                        <span class="skill-tag"><i class="fas fa-copyright"></i> C Language</span>
                     </div>
                 </div>
+
+                <!-- Developer Tools -->
                 <div class="skill-card wide" data-aos="fade-up" data-aos-delay="400">
                     <div class="skill-header">
                         <div class="skill-icon si-tools"><i class="fas fa-tools"></i></div>
-                        <h3>Developer Tools</h3>
+                        <h3>Developer Tools &amp; Platforms</h3>
                     </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fab fa-git-alt"></i> Git &amp; GitHub <span class="skill-pct">88%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="88%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fas fa-code"></i> VS Code <span class="skill-pct">92%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="92%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fas fa-chart-bar"></i> Power BI <span class="skill-pct">75%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="75%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-pill"><i class="fas fa-file-alt"></i> MS Office <span class="skill-pct">85%</span></div>
-                            <div class="skill-bar"><div class="skill-fill" data-progress="85%"></div></div>
-                        </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git &amp; GitHub</span>
+                        <span class="skill-tag"><i class="fas fa-code"></i> VS Code</span>
+                        <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
+                        <span class="skill-tag"><i class="fas fa-file-alt"></i> MS Office</span>
+                        <span class="skill-tag"><i class="fab fa-python"></i> Streamlit</span>
+                        <span class="skill-tag"><i class="fas fa-cloud"></i> Gemini API</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -446,7 +427,10 @@
                             <span>RAG</span><span>AI Agents</span>
                         </div>
                         <div class="exp-actions">
-                            <a href="cert-brainovision.pdf" target="_blank" class="exp-cert-btn cert-preview-btn" data-cert-url="cert-brainovision.pdf" data-cert-title="Brainovision Solutions — AI for Generation & Automation Certificate" title="View Brainovision Internship Certificate">
+                            <a href="cert-brainovision.pdf" target="_blank" class="exp-cert-btn cert-preview-btn"
+                                data-cert-url="cert-brainovision.pdf"
+                                data-cert-title="Brainovision Solutions — AI for Generation & Automation Certificate"
+                                title="View Brainovision Internship Certificate">
                                 <i class="fas fa-certificate"></i> View Certificate
                             </a>
                         </div>
@@ -493,7 +477,10 @@
                             <span>Collections</span><span>Exception Handling</span>
                         </div>
                         <div class="exp-actions">
-                            <a href="cert-InternPe.pdf" target="_blank" class="exp-cert-btn cert-preview-btn" data-cert-url="cert-InternPe.pdf" data-cert-title="InternPe — Java Programmer Internship Certificate" title="View InternPe Internship Certificate">
+                            <a href="cert-InternPe.pdf" target="_blank" class="exp-cert-btn cert-preview-btn"
+                                data-cert-url="cert-InternPe.pdf"
+                                data-cert-title="InternPe — Java Programmer Internship Certificate"
+                                title="View InternPe Internship Certificate">
                                 <i class="fas fa-certificate"></i> View Certificate
                             </a>
                         </div>
@@ -528,7 +515,8 @@
                             <strong>J2EE</strong> and <strong>Web 2.0 Technologies</strong>. Developed <strong>Employee
                                 Shift &amp; Attendance Manager (ESAM)</strong> — a complete full-stack web application
                             for employee authentication, attendance tracking, leave management, shift scheduling, and
-                            administrative dashboards running on a local server.</p>
+                            administrative dashboards running on a local server.
+                        </p>
                         <div class="exp-highlights">
                             <div class="exp-highlight"><i class="fas fa-check-circle"></i> Built ESAM using three-tier
                                 architecture (Presentation, Business Logic, Data Layer)</div>
@@ -543,7 +531,10 @@
                             <span>JavaScript</span><span>REST APIs</span>
                         </div>
                         <div class="exp-actions">
-                            <a href="cert-rinl.pdf" target="_blank" class="exp-cert-btn cert-preview-btn" data-cert-url="cert-rinl.pdf" data-cert-title="RINL (Vizag Steel) — Full Stack Internship Certificate" title="View RINL Internship Certificate">
+                            <a href="cert-rinl.pdf" target="_blank" class="exp-cert-btn cert-preview-btn"
+                                data-cert-url="cert-rinl.pdf"
+                                data-cert-title="RINL (Vizag Steel) — Full Stack Internship Certificate"
+                                title="View RINL Internship Certificate">
                                 <i class="fas fa-certificate"></i> View Certificate
                             </a>
                         </div>
@@ -568,18 +559,29 @@
                     <div class="cert-tags"><span>Responsive Web</span><span>Dynamic
                             Web</span><span>SQL</span><span>Python</span></div>
                     <div class="cert-links">
-                        <a href="cert-nxtwave-responsive.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-nxtwave-responsive.pdf" data-cert-title="NxtWave — Build Your Own Responsive Website">Responsive Web</a>
-                        <a href="cert-nxtwave-static.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-nxtwave-static.pdf" data-cert-title="NxtWave — Build Your Own Static Website">Static Web</a>
-                        <a href="cert-nxtwave-db.png" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-nxtwave-db.png" data-cert-title="NxtWave — Introduction to Databases">Database</a>
+                        <a href="cert-nxtwave-responsive.pdf" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-nxtwave-responsive.pdf"
+                            data-cert-title="NxtWave — Build Your Own Responsive Website">Responsive Web</a>
+                        <a href="cert-nxtwave-static.pdf" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-nxtwave-static.pdf"
+                            data-cert-title="NxtWave — Build Your Own Static Website">Static Web</a>
+                        <a href="cert-nxtwave-db.png" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-nxtwave-db.png"
+                            data-cert-title="NxtWave — Introduction to Databases">Database</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up">
-                    <div class="cert-badge brainovision"><img src="logo-brainovision.png" alt="Brainovision Logo" class="cert-logo"></div>
+                    <div class="cert-badge brainovision"><img src="logo-brainovision.png" alt="Brainovision Logo"
+                            class="cert-logo"></div>
                     <h3>Brainovision Solutions</h3>
                     <p>AI for Generation &amp; Automation Internship</p>
-                    <div class="cert-tags"><span>Generative AI</span><span>LLMs</span><span>SLMs</span><span>Gemini API</span></div>
+                    <div class="cert-tags"><span>Generative AI</span><span>LLMs</span><span>SLMs</span><span>Gemini
+                            API</span></div>
                     <div class="cert-links">
-                        <a href="cert-brainovision.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-brainovision.pdf" data-cert-title="Brainovision Solutions — AI for Generation & Automation Certificate">View Certificate</a>
+                        <a href="cert-brainovision.pdf" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-brainovision.pdf"
+                            data-cert-title="Brainovision Solutions — AI for Generation & Automation Certificate">View
+                            Certificate</a>
                     </div>
                 </div>
                 <!-- RINL Vizag Steel Internship -->
@@ -587,19 +589,28 @@
                     <div class="cert-badge rinl"><img src="logo-rinl.png" alt="RINL Logo" class="cert-logo"></div>
                     <h3>RINL Vizag Steel</h3>
                     <p>Full Stack Web Development Internship</p>
-                    <div class="cert-tags"><span>Spring Boot</span><span>Oracle DB</span><span>REST APIs</span><span>J2EE</span></div>
+                    <div class="cert-tags"><span>Spring Boot</span><span>Oracle DB</span><span>REST
+                            APIs</span><span>J2EE</span></div>
                     <div class="cert-links">
-                        <a href="cert-rinl.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-rinl.pdf" data-cert-title="RINL Vizag Steel &mdash; Full Stack Web Development Internship Certificate">View Certificate</a>
+                        <a href="cert-rinl.pdf" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-rinl.pdf"
+                            data-cert-title="RINL Vizag Steel &mdash; Full Stack Web Development Internship Certificate">View
+                            Certificate</a>
                     </div>
                 </div>
                 <!-- InternPe Internship -->
                 <div class="cert-card" data-aos="fade-up">
-                    <div class="cert-badge internpe"><img src="logo-internpe.png" alt="InternPe Logo" class="cert-logo"></div>
+                    <div class="cert-badge internpe"><img src="logo-internpe.png" alt="InternPe Logo" class="cert-logo">
+                    </div>
                     <h3>InternPe</h3>
                     <p>Java Programmer Internship</p>
-                    <div class="cert-tags"><span>Core Java</span><span>OOP</span><span>Game Logic</span><span>Algorithms</span></div>
+                    <div class="cert-tags"><span>Core Java</span><span>OOP</span><span>Game
+                            Logic</span><span>Algorithms</span></div>
                     <div class="cert-links">
-                        <a href="cert-InternPe.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-InternPe.pdf" data-cert-title="InternPe &mdash; Java Programmer Internship Certificate">View Certificate</a>
+                        <a href="cert-InternPe.pdf" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-InternPe.pdf"
+                            data-cert-title="InternPe &mdash; Java Programmer Internship Certificate">View
+                            Certificate</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
@@ -608,7 +619,9 @@
                     <p>Solutions Architecture Job Simulation</p>
                     <div class="cert-tags"><span>Cloud Architecture</span><span>AWS</span></div>
                     <div class="cert-links">
-                        <a href="cert-aws.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-aws.pdf" data-cert-title="AWS (Forage) — Solutions Architecture Job Simulation">View Certificate</a>
+                        <a href="cert-aws.pdf" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-aws.pdf"
+                            data-cert-title="AWS (Forage) — Solutions Architecture Job Simulation">View Certificate</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
@@ -617,7 +630,9 @@
                     <p>HTML & CSS Certification</p>
                     <div class="cert-tags"><span>HTML</span><span>CSS</span></div>
                     <div class="cert-links">
-                        <a href="cert-guvi.png" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-guvi.png" data-cert-title="HCL GUVI — HTML & CSS Certification">View Certificate</a>
+                        <a href="cert-guvi.png" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-guvi.png" data-cert-title="HCL GUVI — HTML & CSS Certification">View
+                            Certificate</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
@@ -629,7 +644,9 @@
                         <span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span>
                     </div>
                     <div class="cert-links">
-                        <a href="cert-studenttribe.png" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-studenttribe.png" data-cert-title="StudentTribe — MERN Stack Bootcamp">View Certificate</a>
+                        <a href="cert-studenttribe.png" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-studenttribe.png"
+                            data-cert-title="StudentTribe — MERN Stack Bootcamp">View Certificate</a>
                     </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
@@ -641,9 +658,137 @@
                             Analytics</span><span>SQL</span><span>DBMS</span><span>Excel</span><span>Tableau</span><span>PowerBI</span>
                     </div>
                     <div class="cert-links">
-                        <a href="cert-cisco.pdf" target="_blank" class="cert-link cert-preview-btn" data-cert-url="cert-cisco.pdf" data-cert-title="CISCO — Data Analytics Essentials">View Certificate</a>
+                        <a href="cert-cisco.pdf" target="_blank" class="cert-link cert-preview-btn"
+                            data-cert-url="cert-cisco.pdf" data-cert-title="CISCO — Data Analytics Essentials">View
+                            Certificate</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ACHIEVEMENTS ===== -->
+    <section class="section" id="achievements">
+        <div class="container">
+            <h2 class="section-title">My <span class="gradient-text">Achievements</span></h2>
+            <p class="section-subtitle">Milestones &amp; recognitions along the way</p>
+            <div class="achievements-grid">
+
+                <!-- 1. Campus TO Core iTecent -->
+                <div class="achievement-card" data-aos="fade-up">
+                    <div class="achievement-icon ach-purple">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-badge">Event Organizer</div>
+                        <h3>Campus TO Core iTecent &mdash; T-Hub, Hyderabad</h3>
+                        <p>Organized the <strong>Campus TO Core iTecent</strong> event at T-Hub, Hyderabad &mdash; one
+                            of Asia's largest innovation hubs &mdash; in collaboration with <strong>Brainovision
+                                Solutions</strong>, bridging campus talent with the tech industry.</p>
+                        <span class="achievement-date"><i class="fas fa-calendar"></i> 2026</span>
+                    </div>
+                </div>
+
+                <!-- 2. Build Bharath through AI Hackathon -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="achievement-icon ach-green">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-badge">Hackathon Organizer</div>
+                        <h3>Build Bharath through AI &mdash; 2-Day Hackathon</h3>
+                        <p>Co-organized a <strong>2-day AI Hackathon</strong> titled &ldquo;Build Bharath through
+                            AI&rdquo;, hosted by the <strong>CodeIAM Club</strong> &mdash; bringing together student
+                            developers to build impactful AI solutions for real-world challenges.</p>
+                        <span class="achievement-date"><i class="fas fa-calendar"></i> 2025</span>
+                    </div>
+                </div>
+
+                <!-- 3. RINL PSU Selection -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="achievement-icon ach-gold">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-badge">Internship</div>
+                        <h3>Selected for RINL (Vizag Steel) Internship</h3>
+                        <p>Competitively selected for an internship at a Government of India enterprise — Rashtriya
+                            Ispat Nigam Limited, one of India's leading integrated steel plants.</p>
+                        <span class="achievement-date"><i class="fas fa-calendar"></i> June 2025</span>
+                    </div>
+                </div>
+
+                <!-- 4. AI Interview Simulator Deployment -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="achievement-icon ach-purple">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-badge">Live Deployment</div>
+                        <h3>AI Interview Simulator — Live on Streamlit Cloud</h3>
+                        <p>Successfully deployed an AI-powered mock interview platform using Gemini API &amp; SLMs,
+                            publicly accessible on Streamlit Cloud with multi-engine evaluation.</p>
+                        <span class="achievement-date"><i class="fas fa-calendar"></i> July 2026</span>
+                    </div>
+                </div>
+
+                <!-- 5. Portfolio with Custom AI -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="achievement-icon ach-green">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-badge">Personal Project</div>
+                        <h3>Built VamAI — Custom AI Portfolio Assistant</h3>
+                        <p>Engineered a fully custom AI chatbot (VamAI) in pure JavaScript with a local knowledge base,
+                            NLP-style intent matching, and a polished glassmorphism UI — integrated into a live
+                            portfolio.</p>
+                        <span class="achievement-date"><i class="fas fa-calendar"></i> 2026</span>
+                    </div>
+                </div>
+
+                <!-- 6. Brainovision AI Internship -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="achievement-icon ach-blue">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-badge">Certification</div>
+                        <h3>Generative AI &amp; Automation — Brainovision Solutions</h3>
+                        <p>Completed a hands-on internship in Generative AI, earning certification after building an
+                            LLM-powered project integrating a local knowledge base with the Gemini API.</p>
+                        <span class="achievement-date"><i class="fas fa-calendar"></i> Jul 2026</span>
+                    </div>
+                </div>
+
+                <!-- 7. CISCO Data Analytics -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="achievement-icon ach-cyan">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-badge">Certification</div>
+                        <h3>CISCO — Data Analytics Essentials</h3>
+                        <p>Earned an industry-recognized certification from CISCO covering Data Analytics, SQL, DBMS,
+                            Excel, Tableau, and Power BI through the Networking Academy.</p>
+                        <span class="achievement-date"><i class="fas fa-calendar"></i> 2025</span>
+                    </div>
+                </div>
+
+                <!-- 8. AWS Solutions Architecture -->
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="achievement-icon ach-orange">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-badge">Simulation</div>
+                        <h3>AWS Solutions Architecture Job Simulation</h3>
+                        <p>Completed the AWS Forage Solutions Architecture virtual job simulation, gaining practical
+                            exposure to designing scalable cloud infrastructure on AWS.</p>
+                        <span class="achievement-date"><i class="fas fa-calendar"></i> 2025</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -667,15 +812,19 @@
                     <div class="project-image">
                         <img src="portfolio-interface.png" alt="Portfolio Website" class="project-img">
                         <div class="project-overlay">
-                            <a href="https://vedasrivamsi.github.io/portfolio/" class="po-btn" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/vedasrivamsi/portfolio" class="po-btn" target="_blank" title="GitHub Repo"><i class="fab fa-github"></i></a>
+                            <a href="https://vedasrivamsi.github.io/portfolio/" class="po-btn" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/vedasrivamsi/portfolio" class="po-btn" target="_blank"
+                                title="GitHub Repo"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="project-body">
                         <div class="project-badge"><i class="fas fa-user-code"></i> Personal Project</div>
                         <h3>VamAI-Integrated Personal Portfolio</h3>
-                        <p>A modern, responsive portfolio showcasing skills, projects, and journey as a developer with smooth animations and VamAI assistant.</p>
-                        <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>VamAI Engine</span></div>
+                        <p>A modern, responsive portfolio showcasing skills, projects, and journey as a developer with
+                            smooth animations and VamAI assistant.</p>
+                        <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>VamAI
+                                Engine</span></div>
                     </div>
                 </div>
 
@@ -684,14 +833,17 @@
                     <div class="project-image">
                         <img src="ai-interview-simulator.png" alt="AI Interview Simulator" class="project-img">
                         <div class="project-overlay">
-                            <a href="https://ai-interview-simulator-vedasrivamsi.streamlit.app/" class="po-btn" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/vedasrivamsi/AI-Interview-Simulator" class="po-btn" target="_blank" title="GitHub Repo"><i class="fab fa-github"></i></a>
+                            <a href="https://ai-interview-simulator-vedasrivamsi.streamlit.app/" class="po-btn"
+                                target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/vedasrivamsi/AI-Interview-Simulator" class="po-btn"
+                                target="_blank" title="GitHub Repo"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="project-body">
                         <div class="project-badge"><i class="fas fa-briefcase"></i> Brainovision Internship</div>
                         <h3>AI Interview Simulator</h3>
-                        <p>A smart mock interview platform powered by SLMs and Gemini API. Features live scoring, technical insights, multi-engine evaluation, and per-answer feedback.</p>
+                        <p>A smart mock interview platform powered by SLMs and Gemini API. Features live scoring,
+                            technical insights, multi-engine evaluation, and per-answer feedback.</p>
                         <div class="project-tech">
                             <span>Python</span><span>Streamlit</span><span>Gemini API</span>
                             <span>NLP</span><span>SLM</span><span>TF-IDF</span>
@@ -704,13 +856,17 @@
                     <div class="project-image">
                         <img src="RINL-int.png" alt="Employee Shift & Attendance Manager" class="project-img">
                         <div class="project-overlay">
-                            <a href="cert-rinl.pdf" class="po-btn cert-preview-btn" data-cert-url="cert-rinl.pdf" data-cert-title="RINL (Vizag Steel) — Full Stack Internship Certificate" title="View Internship Certificate"><i class="fas fa-certificate"></i></a>
+                            <a href="cert-rinl.pdf" class="po-btn cert-preview-btn" data-cert-url="cert-rinl.pdf"
+                                data-cert-title="RINL (Vizag Steel) — Full Stack Internship Certificate"
+                                title="View Internship Certificate"><i class="fas fa-certificate"></i></a>
                         </div>
                     </div>
                     <div class="project-body">
                         <div class="project-badge"><i class="fas fa-briefcase"></i> RINL Vizag Steel Internship</div>
                         <h3>Employee Shift &amp; Attendance Manager (ESAM)</h3>
-                        <p>A full-stack enterprise web application built using three-tier architecture for employee authentication, attendance tracking, leave management, shift scheduling, and admin dashboards.</p>
+                        <p>A full-stack enterprise web application built using three-tier architecture for employee
+                            authentication, attendance tracking, leave management, shift scheduling, and admin
+                            dashboards.</p>
                         <div class="project-tech">
                             <span>Spring Boot</span><span>Oracle DB</span><span>REST APIs</span>
                             <span>J2EE</span><span>HTML5</span><span>JavaScript</span>
@@ -726,7 +882,9 @@
                     <div class="project-body">
                         <div class="project-badge"><i class="fas fa-user-code"></i> Personal Project</div>
                         <h3>Restaurant Management System</h3>
-                        <p>A web-based restaurant platform featuring digital menu management, online food ordering, billing, Razorpay payment gateway integration, customer order tracking, and delivery workflow.</p>
+                        <p>A web-based restaurant platform featuring digital menu management, online food ordering,
+                            billing, Razorpay payment gateway integration, customer order tracking, and delivery
+                            workflow.</p>
                         <div class="project-tech">
                             <span>Node.js</span><span>MySQL</span><span>Razorpay</span>
                             <span>Express</span><span>HTML5</span><span>CSS3</span>
@@ -739,17 +897,65 @@
                     <div class="project-image">
                         <img src="java-games.png" alt="Java Projects Suite" class="project-img">
                         <div class="project-overlay">
-                            <a href="cert-InternPe.pdf" class="po-btn cert-preview-btn" data-cert-url="cert-InternPe.pdf" data-cert-title="InternPe — Java Programmer Internship Certificate" title="View Internship Certificate"><i class="fas fa-certificate"></i></a>
+                            <a href="cert-InternPe.pdf" class="po-btn cert-preview-btn"
+                                data-cert-url="cert-InternPe.pdf"
+                                data-cert-title="InternPe — Java Programmer Internship Certificate"
+                                title="View Internship Certificate"><i class="fas fa-certificate"></i></a>
                         </div>
                     </div>
                     <div class="project-body">
                         <div class="project-badge"><i class="fas fa-briefcase"></i> InternPe Internship</div>
                         <h3>Java Projects Suite (Tic Tac Toe, Connect 4, Rock Paper Scissors, Number Guesser)</h3>
-                        <p>Interactive Java application suite featuring Tic Tac Toe, Connect 4, Rock Paper Scissors, and Number Guessing Game — built applying Core Java, Object-Oriented Programming (OOP), Collections Framework, and game algorithms.</p>
+                        <p>Interactive Java application suite featuring Tic Tac Toe, Connect 4, Rock Paper Scissors, and
+                            Number Guessing Game — built applying Core Java, Object-Oriented Programming (OOP),
+                            Collections Framework, and game algorithms.</p>
                         <div class="project-tech">
                             <span>Java</span><span>Core Java</span><span>OOP</span>
                             <span>Collections</span><span>Game Logic</span><span>Algorithms</span>
                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CURRENTLY LEARNING ===== -->
+    <section class="section" id="learning">
+        <div class="container">
+            <h2 class="section-title">Currently <span class="gradient-text">Learning</span></h2>
+            <p class="section-subtitle">Technologies I'm actively exploring &amp; upskilling in</p>
+            <div class="learning-grid">
+
+                <div class="learning-card" data-aos="fade-up">
+                    <div class="learning-icon lrn-purple"><i class="fas fa-brain"></i></div>
+                    <div class="learning-body">
+                        <h3>Agentic &amp; Generative AI</h3>
+                        <p>Exploring multi-agent workflows, autonomous AI agents, tool calling, and advanced Generative
+                            AI architectures.</p>
+                        <div class="learning-tags">
+                            <span>Agentic AI</span><span>Generative AI</span><span>LLMs</span><span>AI
+                                Agents</span><span>Prompt Engineering</span>
+                        </div>
+                    </div>
+                    <div class="learning-status">
+                        <span class="status-pill status-active"><span class="status-dot"></span> In Progress</span>
+                    </div>
+                </div>
+
+                <div class="learning-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="learning-icon lrn-yellow"><i class="fab fa-aws"></i></div>
+                    <div class="learning-body">
+                        <h3>AWS Cloud</h3>
+                        <p>Learning cloud infrastructure, AWS core services (EC2, S3, IAM, Lambda), and scalable cloud
+                            architecture deployment.</p>
+                        <div class="learning-tags">
+                            <span>AWS</span><span>Cloud
+                                Architecture</span><span>EC2</span><span>S3</span><span>Serverless</span>
+                        </div>
+                    </div>
+                    <div class="learning-status">
+                        <span class="status-pill status-planned"><i class="fas fa-clock"></i> Planned</span>
                     </div>
                 </div>
 
@@ -769,7 +975,8 @@
                         <h4>Email</h4>
                         <p id="emailText">vedasrivamsi127@gmail.com</p>
                         <div class="cc-actions">
-                            <a href="mailto:vedasrivamsi127@gmail.com" class="cc-link">Send Email <i class="fas fa-arrow-right"></i></a>
+                            <a href="mailto:vedasrivamsi127@gmail.com" class="cc-link">Send Email <i
+                                    class="fas fa-arrow-right"></i></a>
                             <button class="cc-copy-btn" id="copyEmailBtn" title="Copy Email to Clipboard">
                                 <i class="far fa-copy"></i> <span>Copy Email</span>
                             </button>
@@ -841,7 +1048,8 @@
                     <span>Ask me anything about Vamsi</span>
                 </div>
             </div>
-            <button class="vamai-copy-summary" id="vamAiCopySummary" aria-label="Copy Candidate Summary" title="Copy Candidate Summary for Recruiters">📋</button>
+            <button class="vamai-copy-summary" id="vamAiCopySummary" aria-label="Copy Candidate Summary"
+                title="Copy Candidate Summary for Recruiters">📋</button>
             <button class="vamai-clear" id="vamAiClear" aria-label="Clear chat" title="Clear Chat History">🗑️</button>
             <button class="vamai-close" id="vamAiClose" aria-label="Close chat">✕</button>
         </div>
@@ -900,10 +1108,12 @@
                     <span>Sugunesh Veda Sri Vamsi — Resume</span>
                 </div>
                 <div class="resume-modal__actions">
-                    <a href="resume.pdf?v=5.0" target="_blank" class="btn btn-outline-light btn-sm" title="Open PDF in new tab">
+                    <a href="resume.pdf?v=5.0" target="_blank" class="btn btn-outline-light btn-sm"
+                        title="Open PDF in new tab">
                         <i class="fas fa-external-link-alt"></i> <span>Open</span>
                     </a>
-                    <a href="resume.pdf?v=5.0" download="Sugunesh_Veda_Sri_Vamsi_Resume.pdf" class="btn btn-primary btn-sm">
+                    <a href="resume.pdf?v=5.0" download="Sugunesh_Veda_Sri_Vamsi_Resume.pdf"
+                        class="btn btn-primary btn-sm">
                         <i class="fas fa-download"></i> <span>Download</span>
                     </a>
                     <button class="resume-modal__close" id="resumeModalClose" aria-label="Close modal">✕</button>
@@ -912,7 +1122,8 @@
             <div class="resume-modal__body">
                 <div class="resume-mobile-notice">
                     <span>Having trouble viewing on mobile? </span>
-                    <a href="resume.pdf?v=5.0" target="_blank" rel="noopener noreferrer">Open PDF directly <i class="fas fa-external-link-alt"></i></a>
+                    <a href="resume.pdf?v=5.0" target="_blank" rel="noopener noreferrer">Open PDF directly <i
+                            class="fas fa-external-link-alt"></i></a>
                 </div>
                 <iframe src="resume.pdf?v=5.0#toolbar=0" title="Resume Preview" class="resume-iframe"></iframe>
             </div>
@@ -948,9 +1159,9 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="script.js?v=10.0"></script>
+    <script src="script.js?v=11.0"></script>
     <script>
-        VanillaTilt.init(document.querySelectorAll(".skill-card, .project-card, .cert-card, .profile-card"), {
+        VanillaTilt.init(document.querySelectorAll(".skill-card, .project-card, .cert-card, .achievement-card, .learning-card"), {
             max: 5,
             speed: 400,
             glare: true,
