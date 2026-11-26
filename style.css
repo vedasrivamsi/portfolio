@@ -539,8 +539,10 @@ img { max-width: 100%; display: block; }
 /* ===== Currently Learning Section ===== */
 .learning-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 20px;
+    max-width: 750px;
+    margin: 0 auto;
 }
 .learning-card {
     display: flex;

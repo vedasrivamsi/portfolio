@@ -87,6 +87,73 @@ const knowledgeBase = {
         liveUrl: "https://ai-interview-simulator-vedasrivamsi.streamlit.app/",
         githubUrl: "https://github.com/vedasrivamsi/AI-Interview-Simulator"
       },
+
+      {
+        title: "Career Pilot — B.Tech Roadmap Platform",
+        company: "Personal Project",
+        tech: [
+          "JavaScript",
+          "HTML5",
+          "CSS3",
+          "Modular Architecture",
+          "Career Roadmaps"
+        ],
+        description:
+          "Designed and developed Career Pilot, a comprehensive career navigation platform for B.Tech students. Features curated learning roadmaps across 16+ job roles, 12+ subjects, and 4 academic years, aggregating top YouTube channels and free learning resources to guide engineering students with confidence.",
+        liveUrl: "https://vedasrivamsi.github.io/Career-Pilot/",
+        githubUrl: "https://github.com/vedasrivamsi/Career-Pilot"
+      },
+
+      {
+        title: "Cash Compass — Personal Finance & Expense Tracker",
+        company: "Personal Project",
+        tech: [
+          "JavaScript",
+          "HTML5",
+          "CSS3",
+          "PWA",
+          "LocalStorage",
+          "Finance Analytics"
+        ],
+        description:
+          "Developed Cash Compass, a modern personal finance Progressive Web App (PWA) to track income, expenses, and budgets. Features auto-debit alerts for subscriptions and rent, monthly balance trends, spending breakdowns, and offline support with LocalStorage.",
+        liveUrl: "https://vedasrivamsi.github.io/cash-compass/",
+        githubUrl: "https://github.com/vedasrivamsi/cash-compass"
+      },
+
+      {
+        title: "MediTrack — Smart Medicine Reminder",
+        company: "Personal Project",
+        tech: [
+          "JavaScript",
+          "Bootstrap 5",
+          "HTML5",
+          "CSS3",
+          "PWA",
+          "LocalStorage"
+        ],
+        description:
+          "Designed and built MediTrack, a responsive healthcare Progressive Web App to ensure medical adherence. Features daily dose reminders, adherence streak tracking, health vitals logging (body weight), inventory monitoring, and clinical checkup scheduling.",
+        liveUrl: "https://vedasrivamsi.github.io/MediTrack/",
+        githubUrl: "https://github.com/vedasrivamsi/MediTrack"
+      },
+
+      {
+        title: "21-Day Habit Tracker — Premium Productivity",
+        company: "Personal Project",
+        tech: [
+          "JavaScript",
+          "HTML5",
+          "CSS3",
+          "PWA",
+          "Chart Engine",
+          "LocalStorage"
+        ],
+        description:
+          "Developed 21-Day Habit Tracker, a premium productivity Progressive Web App designed to build discipline and consistency. Features a customizable 21-day habit protocol grid, daily completion scoring, habit cycle management, and custom chart engine analytics.",
+        liveUrl: "https://vedasrivamsi.github.io/habit-tracker/",
+        githubUrl: "https://github.com/vedasrivamsi/habit-tracker"
+      },
   
       {
         title: "Restaurant Management System",
@@ -837,6 +904,78 @@ ${results.map(formatProject).join("<br>")}
     <p><strong>Type:</strong> Personal Project</p>
     <p><strong>🛠 Tech Stack:</strong> HTML5 &bull; CSS3 &bull; JavaScript &bull; Node.js &bull; MySQL &bull; Razorpay</p>
     <p>A full-featured web-based restaurant platform with digital menu management, online food ordering, billing, <strong>Razorpay payment integration</strong>, customer order tracking, and delivery management.</p>
+</div>
+`;
+    }
+
+    // Career Pilot
+    const careerPilotKw = ["career pilot", "careerpilot", "career roadmap", "roadmap platform", "btech roadmap", "b.tech roadmap", "roadmaps"];
+    if (careerPilotKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "career_pilot";
+        return `
+<div class="response-card">
+    <h3>🧭 Career Pilot — B.Tech Student Roadmap Platform</h3>
+    <p><strong>Type:</strong> Personal Project</p>
+    <p><strong>🛠 Tech Stack:</strong> JavaScript &bull; HTML5 &bull; CSS3 &bull; Modular JS &bull; Career Roadmaps</p>
+    <p>A curated career navigation platform for B.Tech students featuring roadmaps across <strong>16+ job roles</strong>, <strong>12+ subjects</strong>, and <strong>4 academic years</strong> with top free resources and YouTube tutorials.</p>
+    <p>
+        <a href="https://vedasrivamsi.github.io/Career-Pilot/" target="_blank" class="cc-link">🚀 Live Demo ➔</a> &nbsp;
+        <a href="https://github.com/vedasrivamsi/Career-Pilot" target="_blank" class="cc-link">💻 GitHub ➔</a>
+    </p>
+</div>
+`;
+    }
+
+    // Cash Compass
+    const cashCompassKw = ["cash compass", "cashcompass", "expense tracker", "budget planner", "finance app", "personal finance", "spending tracker", "money management"];
+    if (cashCompassKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "cash_compass";
+        return `
+<div class="response-card">
+    <h3>🧭 Cash Compass — Personal Finance &amp; Expense Tracker</h3>
+    <p><strong>Type:</strong> Personal Project (PWA)</p>
+    <p><strong>🛠 Tech Stack:</strong> JavaScript &bull; HTML5 &bull; CSS3 &bull; PWA &bull; LocalStorage &bull; Finance Analytics</p>
+    <p>A smart personal finance companion with real-time income &amp; expense tracking, auto-debit alerts for subscriptions and rent, monthly balance trends, spending breakdowns, and offline PWA capability.</p>
+    <p>
+        <a href="https://vedasrivamsi.github.io/cash-compass/" target="_blank" class="cc-link">🚀 Live Demo ➔</a> &nbsp;
+        <a href="https://github.com/vedasrivamsi/cash-compass" target="_blank" class="cc-link">💻 GitHub ➔</a>
+    </p>
+</div>
+`;
+    }
+
+    // MediTrack
+    const meditrackKw = ["meditrack", "medicine reminder", "medicine tracker", "medication", "pill reminder", "dose reminder", "health tracker"];
+    if (meditrackKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "meditrack";
+        return `
+<div class="response-card">
+    <h3>💊 MediTrack — Smart Medicine Reminder System</h3>
+    <p><strong>Type:</strong> Personal Project (PWA)</p>
+    <p><strong>🛠 Tech Stack:</strong> JavaScript &bull; Bootstrap 5 &bull; HTML5 &bull; CSS3 &bull; PWA &bull; LocalStorage</p>
+    <p>A personal healthcare companion with timely medicine reminders, dose adherence tracking, daily streak calculation, body weight logging, and clinical checkup schedules.</p>
+    <p>
+        <a href="https://vedasrivamsi.github.io/MediTrack/" target="_blank" class="cc-link">🚀 Live Demo ➔</a> &nbsp;
+        <a href="https://github.com/vedasrivamsi/MediTrack" target="_blank" class="cc-link">💻 GitHub ➔</a>
+    </p>
+</div>
+`;
+    }
+
+    // Habit Tracker
+    const habitTrackerKw = ["habit tracker", "habittracker", "21 day habit", "21-day habit", "habit", "productivity tracker", "protocols"];
+    if (habitTrackerKw.some(kw => input.includes(kw))) {
+        conversationContext.lastIntent = "habit_tracker";
+        return `
+<div class="response-card">
+    <h3>📅 21-Day Habit Tracker — Premium Productivity</h3>
+    <p><strong>Type:</strong> Personal Project (PWA)</p>
+    <p><strong>🛠 Tech Stack:</strong> JavaScript &bull; HTML5 &bull; CSS3 &bull; PWA &bull; Chart Engine &bull; LocalStorage</p>
+    <p>A clean productivity app designed to build discipline through 21-day habit cycles. Features customizable daily protocol matrices, check-off scorecards, cycle resets, and custom chart engine visual analytics.</p>
+    <p>
+        <a href="https://vedasrivamsi.github.io/habit-tracker/" target="_blank" class="cc-link">🚀 Live Demo ➔</a> &nbsp;
+        <a href="https://github.com/vedasrivamsi/habit-tracker" target="_blank" class="cc-link">💻 GitHub ➔</a>
+    </p>
 </div>
 `;
     }

@@ -300,6 +300,7 @@ Profile Context:
   3. Full Stack Web Development Intern at RINL Vizag Steel (1 Month, Jun 2025, Offline): Built Employee Shift & Attendance Manager (ESAM) with Spring Boot, Oracle DB, REST APIs.
 - Certifications: CISCO Data Analytics Essentials, AWS Solutions Architecture (Forage), HCL GUVI HTML & CSS, NxtWave CCBP.
 - Skills: C, Python, JavaScript, HTML5, CSS3, Bootstrap, SQL, MySQL, SQLite, Git, GitHub, VS Code, MS Office, Power BI, Machine Learning, Artificial Intelligence, DBMS.
+- Key Projects: VamAI Portfolio, AI Interview Simulator, Career Pilot (B.Tech Career Roadmaps), Cash Compass (Personal Finance PWA), MediTrack (Medicine Reminder PWA), 21-Day Habit Tracker (Productivity PWA), ESAM (Spring Boot), Restaurant Management System, Java Projects Suite.
 - Languages: English (Full Professional), Telugu (Native), Hindi (Conversational), Tamil (Basic).
 - Contact: Email vedasrivamsi127@gmail.com, LinkedIn: sugunesh-vedasrivamsi, GitHub: vedasrivamsi.
 
